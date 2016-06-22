@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{34D682EA-C8C1-4748-A8B8-CD42DDDD7349}</ProjectGuid>
+    <ProjectGuid>{EE5B2BD5-D956-4E2B-A601-5B08D129B56F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Control</RootNamespace>
+    <RootNamespace>ListPanel</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,10 +78,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Control.h" />
+    <ClInclude Include="ListPanel.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Control.cpp" />
+    <ClCompile Include="ListPanel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{34D682EA-C8C1-4748-A8B8-CD42DDDD7349}</ProjectGuid>
+    <ProjectGuid>{6B5844C6-94AB-4587-9FD9-FEE16B4E2E88}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Control</RootNamespace>
+    <RootNamespace>Button</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,10 +78,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Control.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="ButtonItem.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Control.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ButtonItem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

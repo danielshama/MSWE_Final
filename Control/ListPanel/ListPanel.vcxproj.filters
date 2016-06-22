@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Control.h">
+    <ClInclude Include="ListPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Control.cpp">
+    <ClCompile Include="ListPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

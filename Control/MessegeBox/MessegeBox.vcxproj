@@ -11,9 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{34D682EA-C8C1-4748-A8B8-CD42DDDD7349}</ProjectGuid>
+    <ProjectGuid>{3434C046-7AED-42E6-89B7-9ADAE0CD8006}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Control</RootNamespace>
+    <RootNamespace>MessegeBox</RootNamespace>
+    <ProjectName>MsgBox</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,10 +79,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Control.h" />
+    <ClInclude Include="MsgBox.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Control.cpp" />
+    <ClCompile Include="MsgBox.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
