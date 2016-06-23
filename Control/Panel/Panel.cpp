@@ -5,7 +5,7 @@ Panel::Panel(int height, int width) : Control(width) {
 	setHeight(height);
 }
 
-void Panel::getAllControls(vector<Control *> &controls) {
+void Panel::getAllControls(vector<Control *> controls) {
 	controls = this->controls;
 }
 
