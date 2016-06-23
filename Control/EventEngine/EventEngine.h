@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Control.h"
+#include "../Control/Control.h"
 #include <Windows.h>
 
 class EventEngine
