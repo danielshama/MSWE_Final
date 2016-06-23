@@ -10,6 +10,8 @@ int main(int argc, char **argv)
 	tName.setValue("Sherlock Holmes sfasaf");
 	tName.setBorder(BorderType::Double);
 	tName.setLocation({ 10, 20 });
+	tName.setBackGround(BackgroundColor::Red); 
+	tName.setForeground(ForegroundColor::Cyan);
 	Control::setFocus(&tName);
 	EventEngine engine;
 	engine.run(tName);

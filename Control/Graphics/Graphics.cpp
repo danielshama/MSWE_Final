@@ -58,6 +58,12 @@ void Graphics::write(int x, int y, wstring s)
 	write(s);
 }
 
+void Graphics::resetColors() {
+	_background = Color::Black;
+	_foreground = Color::White;
+	updateConsoleAttributes();
+}
+
 void Graphics::setCursorVisibility(bool isVisible)
 {
 	CONSOLE_CURSOR_INFO cci;
@@ -102,4 +108,36 @@ bool isInside(int x, int y, int left, int top, int width, int height)
 	x -= left;
 	y -= top;
 	return x >= 0 && y >= 0 && x < width && y < height;
+}
+
+Color Graphics::convertToColor(BackgroundColor b) {
+	Color color = Color::Black;
+	switch (b)
+	{
+	case BackgroundColor::Black:	color = Color::Black; break;
+	case BackgroundColor::Blue:		color = Color::Blue; break;
+	case BackgroundColor::Green:	color = Color::Green; break;
+	case BackgroundColor::Red:		color = Color::Red; break;
+	case BackgroundColor::Cyan:		color = Color::Cyan; break;
+	case BackgroundColor::Purple:	color = Color::Purple; break;
+	case BackgroundColor::Orange:	color = Color::Orange; break;
+	case BackgroundColor::White:	color = Color::White; break;
+	}
+	return color;
+}
+
+Color Graphics::convertToColor(ForegroundColor f) {
+	Color color = Color::White;
+	switch (f)
+	{
+		case ForegroundColor::Black:	color = Color::Black; break;
+		case ForegroundColor::Blue:		color = Color::Blue; break;
+		case ForegroundColor::Green:	color = Color::Green; break;
+		case ForegroundColor::Red:		color = Color::Red; break;
+		case ForegroundColor::Cyan:		color = Color::Cyan; break;
+		case ForegroundColor::Purple:	color = Color::Purple; break;
+		case ForegroundColor::Orange:	color = Color::Orange; break;
+		case ForegroundColor::White:	color = Color::White; break;
+	}
+	return color;
 }
