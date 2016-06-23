@@ -12,7 +12,7 @@ int main(VOID){
 	//cName.setLocation({ 10, 20 });
 	Control::setFocus(&cName);
 	cName.setBackGround(BackgroundColor::Green);
-	cName.setForeground(ForegroundColor::White);
+	cName.setForeground(ForegroundColor::Orange);
 	EventEngine engine;
 	engine.run(cName);
 	return 0;

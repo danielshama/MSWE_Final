@@ -13,6 +13,7 @@ void EventEngine::run(Control &c)
 	{
 		if (redraw)
 		{
+			_graphics.resetColors();
 			_graphics.clearScreen();
 			_graphics.setCursorVisibility(false);
 			for (size_t p = 0; p < 1; ++p)

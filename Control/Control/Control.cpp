@@ -8,6 +8,8 @@ Control::Control(int _width) :
 	setLocation({ 0, 0 });
 	width += 2;
 	height += 2;
+	background = BackgroundColor::Black;
+	foreground = ForegroundColor::White;
 }
 
 void Control::show(){
