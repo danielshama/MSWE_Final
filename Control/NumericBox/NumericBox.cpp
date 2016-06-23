@@ -15,7 +15,7 @@ NumericBox::NumericBox(int width, int min, int max):Panel(1,width)
 	Button *plusBtn = new Button(1,"+");
 	plusBtn->addListener(plusListener);
 	
-	addControl(minusBtn, getBodyLeft(), getBodyTop());
+	addControl(minusBtn, getBodyLeft() + getWidth() - 2, getBodyTop());
 	addControl(&val, getBodyLeft() + 1, getBodyTop());
 	addControl(plusBtn, getBodyLeft() + 2, getBodyTop());
 	this->min = min;

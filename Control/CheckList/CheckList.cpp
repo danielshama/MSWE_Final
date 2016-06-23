@@ -11,6 +11,8 @@ CheckList::CheckList(int height, int width, vector<string> options):Panel(height
 	}
 }
 
+
+
 vector<size_t> CheckList::getSelectedIndices(){
 	vector<size_t> selecteds;
 	getAllControls(controls);

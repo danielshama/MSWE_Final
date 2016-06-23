@@ -10,7 +10,7 @@ void Panel::getAllControls(vector<Control *> controls) {
 }
 
 bool Panel::addControl(Control *control, short x, short y) {
-	control->setLocation({ x, y });
+	control->setLocation({ x + getBodyLeft(), y + getBodyTop() });
 	if (!validSpace(*control)) {
 		return false;
 	}
@@ -28,8 +28,8 @@ bool Panel::validSpace(Control c) {
 
 	//checking if in the panel limits
 	if (controllerTop < bodyTop || controllerLeft < bodyLeft) return false;
-	if ((controllerTop + c.getHeight()) > (bodyTop + getHeight() - 2)) return false;
-	if ((controllerLeft + c.getWidth()) > (bodyLeft + getWidth() - 2)) return false;
+	if ((controllerTop + c.getHeight()) > (bodyTop + this->getHeight() - 2)) return false;
+	if ((controllerLeft + c.getWidth() - 2) > (bodyLeft + this->getWidth() - 2)) return false;
 
 	//checking if posision is clear against all the other controllers in the panel
 	return validSpaceWithControllers(c);
@@ -64,9 +64,18 @@ void Panel::draw(Graphics graphics, int x, int y, size_t t) {
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 	for (int i = 0; i < size; i++) {
-		controls[i]->draw(graphics, controls[i]->getLeft(), controls[i]->getTop(), t);
+		graphics.moveTo(controls[i]->getBodyLeft(), controls[i]->getBodyTop());
+		controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), t);
 	}
 	graphics.resetColors();
+}
+
+void Panel::setLocation(COORD coord) {
+	Control::setLocation(coord);
+	int size = controls.size();
+	for (int i = 0; i < size; i++) {
+		controls[i]->setLocation({ getBodyLeft() + controls[i]->getLeft(), getBodyTop() + controls[i]->getTop() });
+	}
 }
 
 Panel::~Panel() {
