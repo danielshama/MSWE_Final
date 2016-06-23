@@ -5,17 +5,18 @@ Panel::Panel(int height, int width) : Control(width) {
 	setHeight(height);
 }
 
-void Panel::getAllControls(vector<Control &> &controls) {
+void Panel::getAllControls(vector<Control *> &controls) {
 	controls = this->controls;
 }
 
-bool Panel::addControl(Control &control, short x, short y) {
-	control.setLocation({ x, y });
-	if (!validSpace(control)) {
+bool Panel::addControl(Control *control, short x, short y) {
+	control->setLocation({ x, y });
+	if (!validSpace(*control)) {
 		return false;
 	}
 	else {
 		controls.push_back(control);
+		return true;
 	}
 
 }
@@ -39,12 +40,19 @@ bool Panel::validSpaceWithControllers(Control c) {
 	int size = controls.size();
 	bool valid = true;
 	for (int i = 0; i < size; i++) {
-		if (!controls[i].validSpace(c)) {
+		if (!controls[i]->validSpace(c)) {
 			valid = false;
 			break;
 		}
 	}
 	return valid;
+}
+
+void Panel::mousePressed(short x, short y, DWORD click) {
+	int size = controls.size();
+	for (int i = 0; i < size; i++) {//check which controller owns the mouse position
+		controls[i]->mousePressed(x, y, click);
+	}
 }
 
 Panel::~Panel() {
