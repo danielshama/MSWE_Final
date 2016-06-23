@@ -2,7 +2,11 @@
 
 
 Control::Control(int _width) : 
-	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){}
+	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
+	setBorder(BorderType::None);
+	width += 2;
+	height += 2;
+}
 
 void Control::show(){
 	visible = true;
@@ -24,8 +28,8 @@ void Control::setBackGround(BackgroundColor color){
 }
 void Control::setBorder(BorderType type){
 	borderType = type;
-	
 }
+
 BorderType Control::getBorderType(){
 	return borderType;
 }
@@ -62,18 +66,16 @@ void Control::setLocation(COORD c){
 	bodyLocation = { c.X + 1, c.Y + 1 };
 }
 void Control::draw(Graphics graphics, int x, int y, size_t w){
-	width += 2;
 	string str(width, getBorderTypeHorizontal());
 	graphics.write(getLeft(), getTop(), str);
 	
-	for (int i = 0; i < height; i++){
+	for (int i = 0; i < height - 1; i++){
 		string strv(width, ' ');
 		strv[0] = getBorderTypeVertical();
 		strv[width-1] = getBorderTypeVertical();
 		graphics.write(getLeft(), (getTop() + 1 ) + i, strv);
 	}
-	graphics.write(location.X, location.Y + (height + 1), str);
-	height += 2;
+	graphics.write(location.X, location.Y + (height - 1), str);
 }
 
 void Control::keyDown(WORD, CHAR){}
@@ -130,10 +132,14 @@ void Control::setWidth(int w) {
 	width = w;
 }
 
-void Control::getAllControls(vector<Control*> &controls){}
+void Control::getAllControls(vector<Control *> &controls){
 
+}
+	
 void Control::setFocus(Control* c){
-	currentFocused->unfocus();
+	if (currentFocused != NULL)
+		currentFocused->unfocus();
+	currentFocused = c;
 	c->focus();
 }
 Control* Control::getFocus(){
