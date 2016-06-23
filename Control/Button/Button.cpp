@@ -8,7 +8,9 @@ void Button::draw(Graphics graphics, int x, int y, size_t w){
 	graphics.write(getBodyLeft(), getBodyTop(), getValue());
 }
 void Button::mousePressed(short x, short y, bool isLeft){
-	if (clickable){
+	if (clickable && (x >= getLeft() || x <= getLeft() + getWidth()) &&
+		(y >= getTop() || y <= getTop() + getHeight())){
+
 		listener->mousePressed(*this, x, y, isLeft);
 	}
 }
