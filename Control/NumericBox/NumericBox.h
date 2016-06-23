@@ -21,7 +21,7 @@ public:
 
 struct PlusListener : public MouseListener {
 	PlusListener(Control& c) : _c(c) {}
-	void mousePressed(Button& b, short x, short y, bool isLeft) {
+	void mousePressed(Control& b, short x, short y, bool isLeft) {
 		NumericBox& tmp = static_cast<NumericBox&>(_c);
 		tmp.setValue(tmp.getValue() + 1);
 	}
@@ -32,7 +32,7 @@ private:
 
 struct MinusListener : public MouseListener {
 	MinusListener(Control& c) : _c(c) {}
-	void mousePressed(Button& b, short x, short y, bool isLeft) {
+	void mousePressed(Control& b, short x, short y, bool isLeft) {
 		NumericBox& tmp = static_cast<NumericBox&>(_c);
 		tmp.setValue(tmp.getValue() - 1);
 	}
