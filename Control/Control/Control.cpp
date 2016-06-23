@@ -3,7 +3,7 @@
 
 Control::Control(int _width) : 
 	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
-	setBorder(BorderType::None)
+	setBorder(BorderType::None);
 }
 
 void Control::show(){
@@ -132,7 +132,7 @@ void Control::setWidth(int w) {
 	width = w;
 }
 
-void Control::getAllControls(vector<Control*> &controls){}
+void Control::getAllControls(vector<Control*> controls){}
 
 void Control::setFocus(Control* c){
 	if (currentFocused != NULL)
