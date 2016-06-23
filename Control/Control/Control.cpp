@@ -132,7 +132,7 @@ void Control::setWidth(int w) {
 	width = w;
 }
 
-void Control::getAllControls(vector<Control*> controls){}
+void Control::getAllControls(vector<Control*> &controls){}
 
 void Control::setFocus(Control* c){
 	if (currentFocused != NULL)
