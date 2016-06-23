@@ -81,7 +81,13 @@
     <ClInclude Include="TextBox.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="TextBox.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Control\Control.vcxproj">
+      <Project>{34d682ea-c8c1-4748-a8b8-cd42dddd7349}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

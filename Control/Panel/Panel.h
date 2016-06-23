@@ -13,9 +13,10 @@ class Panel : public Control
 public:
 	Panel(int height, int width);
 	void addControl(Control& control, int, int);
-	bool validSpace(short x, short y);
-	vector<Control*> getAllControllers();
+	bool validSpace(Control c); //checks if the contrller is in the panel limits
+	bool validSpaceWithControllers(Control c);
 
+	void getAllControls(vector<Control*> &controls);
 	void draw(Graphics graphics, int, int, size_t);
 	void keydown(WORD, CHAR);
 	void mousePress(short, short, DWORD);

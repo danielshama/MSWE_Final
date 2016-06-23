@@ -44,7 +44,9 @@ public:
 	short getTop();
 	int getWidth();
 	int getHeight();
-	vector<Control*> getAllControls();
+	void setHeight(int);
+	void setWidth(int);
+	void getAllControls(vector<Control*> &controls);
 
 	static void setFocus(Control* c);
 	static Control* getFocus();
