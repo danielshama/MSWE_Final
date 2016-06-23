@@ -5,6 +5,7 @@
 Control::Control(int _width) : 
 	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
 	setBorder(BorderType::None);
+	setLocation({ 0, 0 });
 	width += 2;
 	height += 2;
 }
