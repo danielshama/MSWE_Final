@@ -11,11 +11,12 @@ struct MouseListener{
 
 class Button : public Control
 {
+protected:
 	string text;
-	MouseListener* listener;
 	bool clickable;
+	MouseListener* listener;
 public:
-	Button(int width);
+	Button(int width, string text);
 
 	void draw(Graphics graphics, int, int, size_t);
 	void mousePressed(short, short, bool);
