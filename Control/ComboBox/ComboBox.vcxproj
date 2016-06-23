@@ -78,9 +78,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ComboBox.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="ComboBox.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
