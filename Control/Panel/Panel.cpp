@@ -18,7 +18,6 @@ bool Panel::addControl(Control *control, short x, short y) {
 		controls.push_back(control);
 		return true;
 	}
-
 }
 
 bool Panel::validSpace(Control c) {
@@ -49,9 +48,21 @@ bool Panel::validSpaceWithControllers(Control c) {
 }
 
 void Panel::mousePressed(short x, short y, DWORD click) {
+	//check if click is in the panel limits
+	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
+	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
+
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {//check which controller owns the mouse position
 		controls[i]->mousePressed(x, y, click);
+	}
+}
+
+void Panel::draw(Graphics graphics, int x, int y, size_t t) {
+	Control::draw(graphics, x, y, t);
+	int size = controls.size();
+	for (int i = 0; i < size; i++) {
+		controls[i]->draw(graphics, x, y, t);
 	}
 }
 

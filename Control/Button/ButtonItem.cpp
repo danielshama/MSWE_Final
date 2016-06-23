@@ -9,7 +9,9 @@ bool ButtonItem::isChecked(){
 }
 
 void ButtonItem::mousePressed(short x, short y, bool isLeft){
-	if (clickable){
+	if (clickable && (x >= getLeft() || x <= getLeft() + getWidth()) &&
+		(y >= getTop() || y <= getTop() + getHeight())){
+
 		toggle();
 		listener->mousePressed(*this, x, y, isLeft);
 	}

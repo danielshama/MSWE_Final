@@ -1,7 +1,10 @@
 #pragma once
 
 #include "../Control/Control.h"
-#include "../Label/Label.h"
+/*
+#include "../Button/Button.h"
+#include "../Button/ButtonItem.h"
+*/
 #include <vector>
 
 using namespace std;
