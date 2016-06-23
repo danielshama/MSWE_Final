@@ -3,15 +3,20 @@
 
 NumericBox::NumericBox(int width, int min, int max):Panel(1,width)
 {
-	MinusListener listener(NumericBox);
+	MinusListener minusListener(*this);
+	PlusListener plusListener(*this);
+	//Create minus btn and attach listener.
 	Button minusBtn(1,"-");
-	minusBtn.addListener(MinusListener);
+	minusBtn.addListener(minusListener);
+	//Create label.
 	Label val( 5 ,to_string(min));
+	//Create '+' btn and attach listener.
 	Button plusBtn(1,"+");
-	plusBtn.addListener(PlusListener);
-	addControl(minusBtn, getBodyLeft(), getBodyTop());
-	addControl(val, getBodyLeft() + 1, getBodyTop());
-	addControl(plusBtn, getBodyLeft() + 2, getBodyTop());
+	plusBtn.addListener(plusListener);
+	
+	addControl(&minusBtn, getBodyLeft(), getBodyTop());
+	addControl(&val, getBodyLeft() + 1, getBodyTop());
+	addControl(&plusBtn, getBodyLeft() + 2, getBodyTop());
 	this->min = min;
 	this->max = max;
 }
@@ -25,4 +30,4 @@ void NumericBox::setValue(int val) {
 	if (value + val < min || value + val >max) return;
 	else value += val;
 };
-int NumericBox::getValue() {};
+int NumericBox::getValue() {return value;};
