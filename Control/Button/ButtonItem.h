@@ -15,6 +15,7 @@ public:
 	bool isChecked();
 	void toggle();
 	void mousePressed(short, short, bool);
+	void draw(Graphics graphics, int, int, size_t);
 	size_t getIndex();
 	~ButtonItem();
 };

@@ -26,16 +26,39 @@ void CheckList::selectIndex(size_t index){
 void CheckList::deselectIndex(size_t index){
 	static_cast<ButtonItem*>(controls[index])->toggle();
 }
-void CheckList::draw(Graphics graphics, int x, int y, size_t w){
-	//no need
+
+void CheckList::keyDown(WORD click, CHAR chr){
+	if (click == VK_RETURN) {
+		
+	}
+	else if (click == VK_TAB || click == VK_DOWN || click == VK_NUMPAD2) {
+		if (clickedItem < amount - 1) {
+			items[clickedItem].unclick();
+			isClicked[clickedItem] = 0;
+			items[clickedItem + 1].click();
+			isClicked[clickedItem + 1] = 1;
+		}
+	}
+	else if (click == VK_UP || click == VK_NUMPAD8) {
+		if (clickedItem > 0) {
+			items[clickedItem].unclick();
+			isClicked[clickedItem] = 0;
+			items[clickedItem - 1].click();
+			isClicked[clickedItem - 1] = 1;
+		}
+	}
 }
 
-void CheckList::keyDown(WORD event, CHAR chr){
+void CheckList::mousePress(short x, short y, DWORD click){
+	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
+	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
 
-}
+	Control::setFocus(this);
 
-void CheckList::mousePress(short, short, DWORD){
-	//no need
+	int size = controls.size();
+	for (int i = 0; i < size; i++) {
+		controls[i]->mousePressed(x, y, click);
+	}
 }
 
 CheckList::~CheckList(){

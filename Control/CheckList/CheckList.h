@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Panel/Panel.h"
+#include "../Button/ButtonItem.h"
 
 struct SelectListener : public MouseListener{
 	SelectListener(Control& c) : _c(c){}
@@ -19,7 +20,6 @@ public:
 	vector<size_t> getSelectedIndices(); //for on the buttonItems and chks who is checked
 	void selectIndex(size_t index);
 	void deselectIndex(size_t index);
-	void draw(Graphics graphics, int, int, size_t);
 	void keyDown(WORD, CHAR);
 	void mousePress(short, short, DWORD);
 	~CheckList();
