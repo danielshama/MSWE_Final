@@ -91,6 +91,9 @@
     <ProjectReference Include="..\EventEngine\EventEngine.vcxproj">
       <Project>{53df0d8f-b144-4205-bef4-79dbf90ec735}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Panel\Panel.vcxproj">
+      <Project>{b3bf2d68-2dfc-4742-9a9e-1b22515d0f4d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

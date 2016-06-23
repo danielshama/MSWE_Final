@@ -27,7 +27,7 @@ bool Panel::validSpace(Control c) {
 	short controllerLeft = c.getLeft();
 
 	//checking if in the panel limits
-	if (controllerTop > bodyTop || controllerLeft > bodyLeft) return false;
+	if (controllerTop < bodyTop || controllerLeft < bodyLeft) return false;
 	if ((controllerTop + c.getHeight()) > (bodyTop + getHeight() - 2)) return false;
 	if ((controllerLeft + c.getWidth()) > (bodyLeft + getWidth() - 2)) return false;
 
