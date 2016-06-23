@@ -81,7 +81,25 @@
     <ClInclude Include="NumericBox.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="NumericBox.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Button\Button.vcxproj">
+      <Project>{6b5844c6-94ab-4587-9fd9-fee16b4e2e88}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Control\Control.vcxproj">
+      <Project>{34d682ea-c8c1-4748-a8b8-cd42dddd7349}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\EventEngine\EventEngine.vcxproj">
+      <Project>{53df0d8f-b144-4205-bef4-79dbf90ec735}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Label\Label.vcxproj">
+      <Project>{d34ee071-f88c-48cf-a4df-f436e9bbf49d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Panel\Panel.vcxproj">
+      <Project>{b3bf2d68-2dfc-4742-9a9e-1b22515d0f4d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
