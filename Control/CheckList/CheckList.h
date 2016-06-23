@@ -4,7 +4,7 @@
 
 struct SelectListener : public MouseListener{
 	SelectListener(Control& c) : _c(c){}
-	void mousePressed(Button& b, int x, int y, bool isLeft){
+	void mousePressed(Button& b, short x, short y, bool isLeft){
 		CheckList& tmp = static_cast<CheckList&>(_c);
 		tmp.selectIndex(static_cast<ButtonItem&>(b).getIndex());
 	}
