@@ -15,7 +15,7 @@ void EventEngine::run(Control &c)
 		{
 			_graphics.clearScreen();
 			_graphics.setCursorVisibility(false);
-			for (size_t p = 0; p < 5; ++p)
+			for (size_t p = 0; p < 1; ++p)
 				c.draw(_graphics, 0, 0, p);
 			redraw = false;
 		}
@@ -67,7 +67,7 @@ EventEngine::~EventEngine()
 void EventEngine::moveFocus(Control &main, Control *focused)
 {
 	vector<Control*> controls;
-	main.getAllControls(&controls);
+	main.getAllControls(controls);
 	auto it = find(controls.begin(), controls.end(), focused);
 	do
 		if (++it == controls.end())

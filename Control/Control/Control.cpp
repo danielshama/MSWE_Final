@@ -24,6 +24,7 @@ void Control::setBackGround(BackgroundColor color){
 }
 void Control::setBorder(BorderType type){
 	borderType = type;
+	
 }
 BorderType Control::getBorderType(){
 	return borderType;
@@ -58,6 +59,7 @@ char Control::getBorderTypeVertical(){
 }
 void Control::setLocation(COORD c){
 	location = c;
+	bodyLocation = { c.X + 1, c.Y + 1 };
 }
 void Control::draw(Graphics graphics, int x, int y, size_t w){
 	width += 2;
@@ -65,15 +67,13 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 	graphics.write(getLeft(), getTop(), str);
 	
 	for (int i = 0; i < height; i++){
-		string strv(width + 2, ' ');
+		string strv(width, ' ');
 		strv[0] = getBorderTypeVertical();
-		strv[height] = getBorderTypeVertical();
+		strv[width-1] = getBorderTypeVertical();
 		graphics.write(getLeft(), (getTop() + 1 ) + i, strv);
 	}
-
+	graphics.write(location.X, location.Y + (height + 1), str);
 	height += 2;
-
-	graphics.write(location.X, location.Y + (height+1), str);
 }
 
 void Control::keyDown(WORD, CHAR){}
@@ -102,10 +102,17 @@ bool Control::isVisible(){
 	return visible;
 }
 short Control::getLeft(){
-	return location.Y;
+	return location.X;
 }
 short Control::getTop(){
-	return location.X;
+	return location.Y;
+}
+
+short Control::getBodyLeft(){
+	return bodyLocation.X;
+}
+short Control::getBodyTop(){
+	return bodyLocation.Y;
 }
 
 int Control::getWidth(){
