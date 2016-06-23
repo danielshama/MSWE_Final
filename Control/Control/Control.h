@@ -15,12 +15,13 @@ class Control
 	int width, height;
 	bool isFocused, isfocusable, visible;
 	COORD location;
+	COORD bodyLocation;
 	ForegroundColor foreground;
 	BackgroundColor background;
 	BorderType borderType;
 
-	static Control* currentFocused;
 public:
+
 	Control(int width);
 	void show();
 	void hide();
@@ -34,7 +35,7 @@ public:
 	char getBorderTypeHorizontal();
 	char getBorderTypeVertical();
 	virtual void draw(Graphics graphics, int, int, size_t);
-	virtual void keydown(WORD, CHAR);
+	virtual void keyDown(WORD, CHAR);
 	virtual void mousePressed(short, short, DWORD);
 	bool canGetFocus();
 	bool validSpace(Control c); //on me
@@ -42,9 +43,13 @@ public:
 	bool isVisible();
 	short getLeft();
 	short getTop();
+	short getBodyLeft();
+	short getBodyTop();
 	int getWidth();
 	int getHeight();
-	vector<Control*> getAllControls();
+	void setHeight(int);
+	void setWidth(int);
+	void getAllControls(vector<Control*> &controls);
 
 	static void setFocus(Control* c);
 	static Control* getFocus();
@@ -52,3 +57,4 @@ public:
 	~Control();
 };
 
+static Control* currentFocused = NULL;
