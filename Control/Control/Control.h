@@ -34,7 +34,7 @@ public:
 	char getBorderTypeHorizontal();
 	char getBorderTypeVertical();
 	virtual void draw(Graphics graphics, int, int, size_t);
-	virtual void keydown(WORD, CHAR);
+	virtual void keyDown(WORD, CHAR);
 	virtual void mousePressed(short, short, DWORD);
 	bool canGetFocus();
 	bool validSpace(Control c); //on me
@@ -44,7 +44,9 @@ public:
 	short getTop();
 	int getWidth();
 	int getHeight();
-	vector<Control*> getAllControls();
+	void setHeight(int);
+	void setWidth(int);
+	void getAllControls(vector<Control*> &controls);
 
 	static void setFocus(Control* c);
 	static Control* getFocus();

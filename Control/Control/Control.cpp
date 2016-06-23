@@ -76,7 +76,7 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 	graphics.write(location.X, location.Y + (height+1), str);
 }
 
-void Control::keydown(WORD, CHAR){}
+void Control::keyDown(WORD, CHAR){}
 
 void Control::mousePressed(short, short, DWORD){}
 
@@ -115,9 +115,15 @@ int Control::getHeight(){
 	return height;
 }
 
-vector<Control*> Control::getAllControls(){
-	return vector<Control*>();
+void Control::setHeight(int h) {
+	height = h;
 }
+
+void Control::setWidth(int w) {
+	width = w;
+}
+
+void Control::getAllControls(vector<Control*> &controls){}
 
 void Control::setFocus(Control* c){
 	currentFocused->unfocus();
