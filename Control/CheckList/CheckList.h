@@ -20,7 +20,7 @@ public:
 	void selectIndex(size_t index);
 	void deselectIndex(size_t index);
 	void draw(Graphics graphics, int, int, size_t);
-	void keydown(WORD, CHAR);
+	void keyDown(WORD, CHAR);
 	void mousePress(short, short, DWORD);
 	~CheckList();
 };
