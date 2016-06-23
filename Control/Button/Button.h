@@ -5,12 +5,13 @@
 
 using namespace std;
 
-struct MouseListener{
-	virtual void mousePressed(Button& b, short x, short y, bool isLeft) = 0; //chk what is it 
-};
 
+struct MouseListener {
+	virtual void mousePressed(Button &b, short x, short y, bool isLeft) = 0; //chk what is it 
+};
 class Button : public Control
 {
+
 protected:
 	string text;
 	bool clickable;
