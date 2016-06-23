@@ -1,6 +1,7 @@
 #include "Control.h"
 
 
+
 Control::Control(int _width) : 
 	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
 	setBorder(BorderType::None);
@@ -78,7 +79,7 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 	graphics.write(location.X, location.Y + (height - 1), str);
 }
 
-void Control::keyDown(WORD, CHAR){}
+void Control::keyDown(WORD, CHAR){} 
 
 void Control::mousePressed(short, short, DWORD){}
 
