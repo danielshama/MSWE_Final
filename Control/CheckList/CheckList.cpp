@@ -4,10 +4,10 @@
 CheckList::CheckList(int height, int width, vector<string> options):Panel(height,width){
 	int len = options.size();
 	for (int i = 0 ; i < len ; i++){ 
-		ButtonItem btn(options[i], width-2, height);
+		ButtonItem *btn = new ButtonItem(options[i], width-2, height);
 		SelectListener lsnr(*this);
-		btn.addListener(lsnr);
-		addControl(&btn, getBodyLeft(), getBodyTop() + (i * 3));
+		btn->addListener(lsnr);
+		addControl(btn, getBodyLeft(), getBodyTop() + (i * 3));
 	}
 }
 

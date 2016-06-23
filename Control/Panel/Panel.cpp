@@ -61,9 +61,12 @@ void Panel::mousePressed(short x, short y, DWORD click) {
 void Panel::draw(Graphics graphics, int x, int y, size_t t) {
 	Control::draw(graphics, getLeft(), getTop(), t);
 	int size = controls.size();
+	graphics.setBackground(graphics.convertToColor(getBackGround()));
+	graphics.setForeground(graphics.convertToColor(getForeground()));
 	for (int i = 0; i < size; i++) {
 		controls[i]->draw(graphics, controls[i]->getLeft(), controls[i]->getTop(), t);
 	}
+	graphics.resetColors();
 }
 
 Panel::~Panel() {
