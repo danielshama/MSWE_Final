@@ -16,9 +16,15 @@ void ButtonItem::mousePressed(short x, short y, bool isLeft){
 		listener->mousePressed(*this, x, y, isLeft);
 	}
 }
+/*void ButtonItem::draw(Graphics graphics, int x, int y, size_t w){
+	if (isFocus()){
+		//insideout
+	} else {
 
+	}
+}*/
 void ButtonItem::toggle(){
-	isCheck != isCheck;
+	isCheck = !isCheck;
 	string tmp = text;
 	text = chkedText;
 	chkedText = tmp;

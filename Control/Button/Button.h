@@ -6,7 +6,8 @@
 using namespace std;
 
 struct MouseListener{
-	virtual void mousePressed(Button& b, short x, short y, bool isLeft) = 0; //chk what is it 
+	MouseListener() {}
+	virtual void mousePressed(Control& b, short x, short y, bool isLeft) = 0; //chk what is it 
 };
 
 class Button : public Control
@@ -18,7 +19,7 @@ protected:
 public:
 	Button(int width, string text);
 
-	void draw(Graphics graphics, int, int, size_t);
+	void draw(Graphics graphics, int x, int y, size_t w);
 	void mousePressed(short, short, bool);
 	void setValue(string value);
 	string getValue();

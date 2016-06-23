@@ -5,6 +5,7 @@
 Control::Control(int _width) : 
 	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
 	setBorder(BorderType::None);
+	setLocation({ 0, 0 });
 	width += 2;
 	height += 2;
 }
@@ -81,7 +82,13 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 
 void Control::keyDown(WORD, CHAR){} 
 
-void Control::mousePressed(short, short, DWORD){}
+void Control::mousePressed(short x, short y, DWORD click){
+	//check if click is in the panel limits
+	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
+	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
+
+	Control::setFocus(this);
+}
 
 bool Control::canGetFocus(){
 	return isfocusable;

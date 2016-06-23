@@ -27,6 +27,8 @@ public:
 	void hide();
 	void setForeground(ForegroundColor color);
 	void setBackGround(BackgroundColor color);
+	ForegroundColor getForeground();
+	BackgroundColor getBackGround();
 	void setBorder(BorderType type);
 	void setLocation(COORD);
 	void focus();

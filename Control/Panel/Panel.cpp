@@ -5,7 +5,7 @@ Panel::Panel(int height, int width) : Control(width) {
 	setHeight(height);
 }
 
-void Panel::getAllControls(vector<Control *> &controls) {
+void Panel::getAllControls(vector<Control *> controls) {
 	controls = this->controls;
 }
 
@@ -21,15 +21,15 @@ bool Panel::addControl(Control *control, short x, short y) {
 }
 
 bool Panel::validSpace(Control c) {
-	short bodyTop = this->getBodyTop();
-	short bodyLeft = this->getBodyLeft();
+	short bodyTop = getBodyTop();
+	short bodyLeft = getBodyLeft();
 	short controllerTop = c.getTop();
 	short controllerLeft = c.getLeft();
 
 	//checking if in the panel limits
 	if (controllerTop > bodyTop || controllerLeft > bodyLeft) return false;
-	if ((controllerTop + c.getHeight()) > (bodyTop + this->getHeight() - 1)) return false;
-	if ((controllerLeft + c.getWidth()) > (bodyLeft + this->getWidth() - 1)) return false;
+	if ((controllerTop + c.getHeight()) > (bodyTop + getHeight() - 2)) return false;
+	if ((controllerLeft + c.getWidth()) > (bodyLeft + getWidth() - 2)) return false;
 
 	//checking if posision is clear against all the other controllers in the panel
 	return validSpaceWithControllers(c);
@@ -59,10 +59,10 @@ void Panel::mousePressed(short x, short y, DWORD click) {
 }
 
 void Panel::draw(Graphics graphics, int x, int y, size_t t) {
-	Control::draw(graphics, x, y, t);
+	Control::draw(graphics, getLeft(), getTop(), t);
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {
-		controls[i]->draw(graphics, x, y, t);
+		controls[i]->draw(graphics, controls[i]->getLeft(), controls[i]->getTop(), t);
 	}
 }
 
