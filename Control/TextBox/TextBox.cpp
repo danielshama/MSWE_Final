@@ -14,7 +14,12 @@ string TextBox::getValue() {
 
 void TextBox::draw(Graphics graphics, int x, int y, size_t w) {
 	Control::draw(graphics, x, y, w);
+	graphics.setBackground(graphics.convertToColor(getBackGround()));
+	graphics.setForeground(graphics.convertToColor(getForeground()));
 	string toPrint = value.substr(0, getWidth() - 2);
+	if (toPrint.length() < getWidth() - 2) {
+		toPrint = toPrint + string(getWidth() - 2 - toPrint.length(), ' ');
+	}
 	graphics.write(getBodyLeft(), getBodyTop(), toPrint);
 	if (isFocus()) {
 		graphics.setCursorVisibility(true);
@@ -25,6 +30,7 @@ void TextBox::draw(Graphics graphics, int x, int y, size_t w) {
 		else
 			graphics.moveTo(getLeft() + curserPosition, getBodyTop());
 	}
+	graphics.resetColors();
 }
 
 void TextBox::keyDown(WORD kind, CHAR c) {
