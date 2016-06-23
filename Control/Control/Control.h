@@ -15,12 +15,13 @@ class Control
 	int width, height;
 	bool isFocused, isfocusable, visible;
 	COORD location;
+	COORD bodyLocation;
 	ForegroundColor foreground;
 	BackgroundColor background;
 	BorderType borderType;
 
-	static Control* currentFocused;
 public:
+
 	Control(int width);
 	void show();
 	void hide();
@@ -42,6 +43,8 @@ public:
 	bool isVisible();
 	short getLeft();
 	short getTop();
+	short getBodyLeft();
+	short getBodyTop();
 	int getWidth();
 	int getHeight();
 	void setHeight(int);
@@ -54,3 +57,4 @@ public:
 	~Control();
 };
 
+static Control* currentFocused = NULL;
