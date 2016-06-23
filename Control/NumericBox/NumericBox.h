@@ -25,10 +25,12 @@ private:
 class NumericBox : public Panel
 {
 	int value;
+	int min;
+	int max;
 public:
 	//add listeners to the buttons + chk if its the first btn in the vector and give him the relevant lisener
 	NumericBox(int width, int min, int max);
-	void setValue(int value);
+	void setValue(int val);
 	int getValue();
 	~NumericBox();
 };
