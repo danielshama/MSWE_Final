@@ -1,6 +1,7 @@
 #include "NumericBox.h"
 
 
+
 NumericBox::NumericBox(int width, int min, int max):Panel(1,width)
 {
 	MinusListener minusListener(*this);

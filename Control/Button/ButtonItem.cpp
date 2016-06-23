@@ -18,7 +18,7 @@ void ButtonItem::mousePressed(short x, short y, bool isLeft){
 }
 
 void ButtonItem::toggle(){
-	isCheck != isCheck;
+	isCheck = !isCheck;
 	string tmp = text;
 	text = chkedText;
 	chkedText = tmp;

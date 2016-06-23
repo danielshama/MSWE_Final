@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../Panel/Panel.h"
+#include "../Button/Button.h"
+#include "../Label/Label.h"
 
 struct PlusListener : public MouseListener{
 	PlusListener(Control& c) : _c(c){}
