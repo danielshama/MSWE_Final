@@ -49,7 +49,7 @@ public:
 	int getHeight();
 	void setHeight(int);
 	void setWidth(int);
-	void getAllControls(vector<Control*> &controls);
+	void getAllControls(vector<Control&> &controls);
 
 	static void setFocus(Control* c);
 	static Control* getFocus();
