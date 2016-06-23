@@ -4,7 +4,7 @@
 CheckList::CheckList(int height, int width, vector<string> options):Panel(height,width){
 	int len = options.size();
 	for (int i = 0 ; i < len ; i++){ 
-		ButtonItem btn(options[i], width, height);
+		ButtonItem btn(options[i], width-2, height);
 		SelectListener lsnr(*this);
 		btn.addListener(lsnr);
 		addControl(&btn, getBodyLeft(), getBodyTop() + i);
@@ -14,7 +14,8 @@ CheckList::CheckList(int height, int width, vector<string> options):Panel(height
 vector<size_t> CheckList::getSelectedIndices(){
 	vector<size_t> selecteds;
 	getAllControls(controls);
-	for (int i = 0; i < controls.size(); i++){
+	int size = controls.size();
+	for (int i = 0; i < size; i++){
 		if (static_cast<ButtonItem*>(controls[i])->isChecked()) selecteds.push_back(i);
 	}
 	return selecteds;
@@ -32,20 +33,10 @@ void CheckList::keyDown(WORD click, CHAR chr){
 		
 	}
 	else if (click == VK_TAB || click == VK_DOWN || click == VK_NUMPAD2) {
-		if (clickedItem < amount - 1) {
-			items[clickedItem].unclick();
-			isClicked[clickedItem] = 0;
-			items[clickedItem + 1].click();
-			isClicked[clickedItem + 1] = 1;
-		}
+		
 	}
 	else if (click == VK_UP || click == VK_NUMPAD8) {
-		if (clickedItem > 0) {
-			items[clickedItem].unclick();
-			isClicked[clickedItem] = 0;
-			items[clickedItem - 1].click();
-			isClicked[clickedItem - 1] = 1;
-		}
+		
 	}
 }
 
