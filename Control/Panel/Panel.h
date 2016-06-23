@@ -10,7 +10,6 @@ using namespace std;
 class Panel : public Control
 {
 	vector<Control*> controls;
-	int height;
 public:
 	Panel(int height, int width);
 	void addControl(Control& control, int, int);
