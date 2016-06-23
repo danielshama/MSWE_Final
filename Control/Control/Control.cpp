@@ -28,6 +28,14 @@ void Control::setForeground(ForegroundColor color){
 void Control::setBackGround(BackgroundColor color){
 	background = color;
 }
+
+ForegroundColor Control::getForeground(){
+	return foreground;
+}
+BackgroundColor Control::getBackGround(){
+	return background;
+}
+
 void Control::setBorder(BorderType type){
 	borderType = type;
 }

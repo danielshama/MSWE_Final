@@ -7,7 +7,7 @@ CheckList::CheckList(int height, int width, vector<string> options):Panel(height
 		ButtonItem btn(options[i], width-2, height);
 		SelectListener lsnr(*this);
 		btn.addListener(lsnr);
-		addControl(&btn, getBodyLeft(), getBodyTop() + i);
+		addControl(&btn, getBodyLeft(), getBodyTop() + (i * 3));
 	}
 }
 

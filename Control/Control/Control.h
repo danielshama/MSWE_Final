@@ -6,8 +6,6 @@
 
 using namespace std;
 
-enum class ForegroundColor {Red, Green, Blue, Purple, Teal, Yellow, White, Black};
-enum class BackgroundColor { Red, Green, Blue, Purple, Teal, Yellow, White, Black };
 enum class BorderType {Single, Double, None};
 
 class Control

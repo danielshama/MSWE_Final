@@ -11,6 +11,7 @@ class TextBox : public Control
 	void moveLeft();
 	void deleteRight();
 	void deleteLeft();
+	void deleteLast();
 	void addCharecter(CHAR c);
 public:
 	TextBox(int width);
@@ -18,7 +19,7 @@ public:
 	string getValue();
 	void draw(Graphics graphics, int, int, size_t);
 	void keyDown(WORD, CHAR);
-	void mousePress(short, short, DWORD);
+	void mousePressed(short, short, DWORD);
 	~TextBox();
 };
 

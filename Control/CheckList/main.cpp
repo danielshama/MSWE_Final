@@ -7,11 +7,11 @@ int main(VOID){
 	strings.push_back("fsdf");
 	strings.push_back("khj");
 	strings.push_back("werewr");
-	CheckList cName(5,10,strings);
-	cName.setBorder(BorderType::Double);
-	cName.setLocation({ 10, 20 });
-	Control::setFocus(&cName);
+	CheckList* cName = new CheckList(20,30,strings);
+	cName->setBorder(BorderType::Double);
+	//cName.setLocation({ 10, 20 });
+	Control::setFocus(cName);
 	EventEngine engine;
-	engine.run(cName);
+	engine.run(*cName);
 	return 0;
 }
