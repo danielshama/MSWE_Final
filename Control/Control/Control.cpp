@@ -2,7 +2,9 @@
 
 
 Control::Control(int _width) : 
-	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){}
+	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
+	setBorder(BorderType::None)
+}
 
 void Control::show(){
 	visible = true;
