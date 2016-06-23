@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../Control/Control.h"
-#include "../Butten/Button.h"
-#include "../Butten/ButtonItem.h"
+#include "../Button/Button.h"
+#include "../Button/ButtonItem.h"
 #include <vector>
 
 using namespace std;
