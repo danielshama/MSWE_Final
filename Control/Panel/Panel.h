@@ -15,8 +15,8 @@ public:
 	bool addControl(Control &control, short x, short y);
 	bool validSpace(Control c); //checks if the contrller is in the panel limits
 	bool validSpaceWithControllers(Control c);
-
 	void getAllControls(vector<Control &> &controls);
+	Control * getControlInPlace(size_t index);
 	void draw(Graphics graphics, int, int, size_t);
 	void keydown(WORD, CHAR);
 	void mousePress(short, short, DWORD);

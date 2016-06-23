@@ -3,7 +3,7 @@
 
 Control::Control(int _width) : 
 	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
-	setBorder(BorderType::None)
+	setBorder(BorderType::None);
 }
 
 void Control::show(){
