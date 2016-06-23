@@ -12,7 +12,7 @@ class Panel : public Control
 	vector<Control &> controls;
 public:
 	Panel(int height, int width);
-	bool addControl(Control &control, short, short);
+	bool addControl(Control &control, short x, short y);
 	bool validSpace(Control c); //checks if the contrller is in the panel limits
 	bool validSpaceWithControllers(Control c);
 
