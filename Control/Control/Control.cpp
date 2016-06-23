@@ -4,6 +4,8 @@
 Control::Control(int _width) : 
 	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
 	setBorder(BorderType::None);
+	width += 2;
+	height += 2;
 }
 
 void Control::show(){
@@ -26,8 +28,6 @@ void Control::setBackGround(BackgroundColor color){
 }
 void Control::setBorder(BorderType type){
 	borderType = type;
-	width += 2;
-	height += 2;
 }
 
 BorderType Control::getBorderType(){
@@ -69,7 +69,7 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 	string str(width, getBorderTypeHorizontal());
 	graphics.write(getLeft(), getTop(), str);
 	
-	for (int i = 0; i < height - 2; i++){
+	for (int i = 0; i < height - 1; i++){
 		string strv(width, ' ');
 		strv[0] = getBorderTypeVertical();
 		strv[width-1] = getBorderTypeVertical();
