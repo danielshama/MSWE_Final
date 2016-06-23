@@ -11,10 +11,10 @@ class ButtonItem : public Button
 	bool isCheck;
 	size_t index;
 public:
-	ButtonItem(string text, string checkedText, int width, size_t index);
+	ButtonItem(string text, int width, size_t index);
 	bool isChecked();
 	void toggle();
-	string getValue();
+	void mousePressed(short, short, bool);
 	size_t getIndex();
 	~ButtonItem();
 };
