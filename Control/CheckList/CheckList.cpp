@@ -48,7 +48,7 @@ void CheckList::keyDown(WORD click, CHAR chr){
 	}
 }
 
-void CheckList::mousePress(short x, short y, DWORD click){
+void CheckList::mousePressed(short x, short y, bool isLeft){
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
 	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
 
@@ -56,7 +56,7 @@ void CheckList::mousePress(short x, short y, DWORD click){
 
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {
-		controls[i]->mousePressed(x, y, click);
+		controls[i]->mousePressed(x, y, isLeft);
 	}
 }
 

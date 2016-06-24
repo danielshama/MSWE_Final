@@ -7,7 +7,12 @@ using namespace std;
 
 struct MouseListener{
 	MouseListener() {}
-	virtual void mousePressed(Control& b, short x, short y, bool isLeft) = 0; //chk what is it 
+	virtual void mousePressed(Control& b, short x, short y, bool isLeft) = 0;
+};
+
+struct MouseListener{
+	MouseListener() {}
+	virtual void mousePressed(Control& b, short x, short y, bool isLeft) = 0;
 };
 
 class Button : public Control
