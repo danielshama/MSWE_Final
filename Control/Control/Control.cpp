@@ -49,10 +49,10 @@ char Control::getBorderTypeHorizontal(){
 	switch (getBorderType())
 	{
 	case BorderType::Single:
-			return '-';
+			return 196;
 			break;
 	case BorderType::Double:
-		return '=';
+		return 205;
 		break;
 	default:
 		return NULL;
@@ -63,7 +63,7 @@ char Control::getBorderTypeVertical(){
 	switch (getBorderType())
 	{
 	case BorderType::Single:
-		return '|';
+		return 179;
 		break;
 	case BorderType::Double:
 		return 186; // ' || '
@@ -73,12 +73,34 @@ char Control::getBorderTypeVertical(){
 		break;
 	}
 }
-void Control::setLocation(COORD c){
-	location = c;
-	bodyLocation = { c.X + 1, c.Y + 1 };
+
+vector<int> Control::getBorderTypeCorners(){
+	switch (getBorderType())
+	{
+	case BorderType::Single:
+		return { 218, 191 , 192, 217};
+		break;
+	case BorderType::Double:
+		return{ 201, 187, 200 , 188}; 
+		break;
+	default:
+		return{ 0 , 0, 0, 0};
+		break;
+	}
+}
+void Control::setLocation(COORD coord){
+	location = coord;
+	bodyLocation = { coord.X + 1, coord.Y + 1 };
+}
+
+COORD Control::getLocation(){
+	return location;
 }
 void Control::draw(Graphics graphics, int x, int y, size_t w){
 	string str(width, getBorderTypeHorizontal());
+	vector<int> corners = getBorderTypeCorners();
+	str[0] = corners[0];
+	str[width - 1] = corners[1];
 	graphics.write(getLeft(), getTop(), str);
 	
 	for (int i = 0; i < height - 1; i++){
@@ -87,6 +109,8 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 		strv[width-1] = getBorderTypeVertical();
 		graphics.write(getLeft(), (getTop() + 1 ) + i, strv);
 	}
+	str[0] = corners[2];
+	str[width - 1] = corners[3];
 	graphics.write(location.X, location.Y + (height - 1), str);
 }
 

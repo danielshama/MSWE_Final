@@ -79,9 +79,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ListPanel.h" />
     <ClInclude Include="Panel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ListPanel.cpp" />
     <ClCompile Include="Panel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

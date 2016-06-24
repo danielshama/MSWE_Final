@@ -10,14 +10,13 @@ void Panel::getAllControls(vector<Control *> controls) {
 }
 
 bool Panel::addControl(Control *control, short x, short y) {
-	control->setLocation({ x + getBodyLeft(), y + getBodyTop() });
-	if (!validSpace(*control)) {
-		return false;
-	}
-	else {
+	control->setLocation({ x , y });
+	if (validSpace(*control)) {
 		controls.push_back(control);
 		return true;
 	}
+	
+	return false;
 }
 
 bool Panel::validSpace(Control c) {
@@ -60,9 +59,10 @@ void Panel::mousePressed(short x, short y, DWORD click) {
 
 void Panel::draw(Graphics graphics, int x, int y, size_t t) {
 	Control::draw(graphics, getLeft(), getTop(), t);
-	int size = controls.size();
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
+
+	int size = controls.size();
 	for (int i = 0; i < size; i++) {
 		graphics.moveTo(controls[i]->getBodyLeft(), controls[i]->getBodyTop());
 		controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), t);
@@ -71,10 +71,14 @@ void Panel::draw(Graphics graphics, int x, int y, size_t t) {
 }
 
 void Panel::setLocation(COORD coord) {
+	COORD tmp = {getBodyLeft(),getBodyTop()};
+	short moveVer, moveHer;
 	Control::setLocation(coord);
 	int size = controls.size();
-	for (int i = 0; i < size; i++) {
-		controls[i]->setLocation({ getBodyLeft() + controls[i]->getLeft(), getBodyTop() + controls[i]->getTop() });
+	for (size_t i = 0; i < size; i++) {
+		moveVer = controls[i]->getBodyTop() - tmp.Y;
+		moveHer = controls[i]->getBodyLeft() - tmp.X;
+		controls[i]->setLocation({ coord.X + moveHer, coord.Y + moveVer});
 	}
 }
 

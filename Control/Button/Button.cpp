@@ -5,10 +5,10 @@ Button::Button(int width, string text) : Control(width), text(text), clickable(t
 
 void Button::draw(Graphics graphics, int x, int y, size_t w){
 	Control::draw(graphics, x, y, w);
-	
-	//graphics.setBackground(getBackGround());
-	//graphics.setForeground(getForeground());
+	graphics.setBackground(graphics.convertToColor(getBackGround()));
+	graphics.setForeground(graphics.convertToColor(getForeground()));
 	graphics.write(getBodyLeft(), getBodyTop(), getValue());
+	graphics.resetColors();
 }
 void Button::mousePressed(short x, short y, bool isLeft){
 	if (clickable && (x >= getLeft() || x <= getLeft() + getWidth()) &&

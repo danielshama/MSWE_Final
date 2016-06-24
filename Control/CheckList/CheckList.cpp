@@ -1,10 +1,10 @@
 #include "CheckList.h"
 
 
-CheckList::CheckList(int height, int width, vector<string> options):Panel(height,width){
+CheckList::CheckList(int height, int width, vector<string> options) : ListPanel(height, width, options){
 	int len = options.size();
 	for (int i = 0 ; i < len ; i++){ 
-		ButtonItem *btn = new ButtonItem(options[i], width-2, height);
+		ButtonItem *btn = new ButtonItem(options[i], getWidth()-4, getHeight());
 		SelectListener lsnr(*this);
 		btn->addListener(lsnr);
 		addControl(btn, getBodyLeft(), getBodyTop() + (i * 3));
@@ -34,7 +34,7 @@ void CheckList::keyDown(WORD click, CHAR chr){
 	if (click == VK_RETURN) {
 		
 	}
-	else if (click == VK_TAB || click == VK_DOWN || click == VK_NUMPAD2) {
+	else if (click == VK_DOWN || click == VK_NUMPAD2) { // maybe add click == VK_TAB
 		
 	}
 	else if (click == VK_UP || click == VK_NUMPAD8) {
@@ -53,6 +53,17 @@ void CheckList::mousePress(short x, short y, DWORD click){
 		controls[i]->mousePressed(x, y, click);
 	}
 }
+
+int CheckList::itemInFocus(){
+	int len = controls.size();
+	for (int i = 0; i < len; i++){
+		if (static_cast<ButtonItem*>(controls[i])->isChecked()){
+			return i;
+		}
+	}
+	return -1;
+}
+
 
 CheckList::~CheckList(){
 }

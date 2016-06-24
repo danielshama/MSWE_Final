@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../Panel/Panel.h"
+#include "../Panel/ListPanel.h"
 #include "../Button/ButtonItem.h"
 
-class CheckList : public Panel
+class CheckList : public ListPanel
 {
 	struct SelectListener : public MouseListener{
 		SelectListener(Control& c) : _c(c){}
@@ -14,6 +14,8 @@ class CheckList : public Panel
 	private:
 		Control& _c;
 	};
+
+	int itemInFocus();
 public:
 	CheckList(int height, int width, vector<string> options);
 	vector<size_t> getSelectedIndices(); //for on the buttonItems and chks who is checked
