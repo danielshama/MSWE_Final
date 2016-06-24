@@ -7,6 +7,7 @@ class ListPanel : public Panel
 {
 protected:
 	int itemInFocus();
+	void switchFocus(int indx);
 public:
 	ListPanel(int height, int width, vector<string> options);
 	void setForeground(ForegroundColor color);

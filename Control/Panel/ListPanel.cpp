@@ -53,6 +53,12 @@ void ListPanel::keyDown(WORD click, CHAR chr){
 	}
 }
 
+void ListPanel::switchFocus(int indx){
+	int tmp = itemInFocus();
+	if (tmp != -1) controls[tmp]->unfocus();
+	controls[indx]->focus();
+}
+
 
 ListPanel::~ListPanel()
 {

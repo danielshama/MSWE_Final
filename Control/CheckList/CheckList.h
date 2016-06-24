@@ -9,7 +9,9 @@ class CheckList : public ListPanel
 		SelectListener(Control& c) : _c(c){}
 		void mousePressed(Control& b, short x, short y, bool isLeft){
 			CheckList& tmp = static_cast<CheckList&>(_c);
-			tmp.selectIndex(static_cast<ButtonItem&>(b).getIndex());
+			int index = static_cast<ButtonItem&>(b).getIndex();
+			tmp.selectIndex(index);
+			tmp.switchFocus(index);
 		}
 	private:
 		Control& _c;
