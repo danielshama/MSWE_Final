@@ -11,7 +11,7 @@ void Panel::getAllControls(vector<Control *> controls) {
 
 bool Panel::addControl(Control *control, short x, short y) {
 	control->setLocation({ x , y });
-	if (validSpace(*control)) {
+	if (validSpace(control)) {
 		controls.push_back(control);
 		return true;
 	}
@@ -19,22 +19,22 @@ bool Panel::addControl(Control *control, short x, short y) {
 	return false;
 }
 
-bool Panel::validSpace(Control c) {
+bool Panel::validSpace(Control* c) {
 	short bodyTop = getBodyTop();
 	short bodyLeft = getBodyLeft();
-	short controllerTop = c.getTop();
-	short controllerLeft = c.getLeft();
+	short controllerTop = c->getTop();
+	short controllerLeft = c->getLeft();
 
 	//checking if in the panel limits
 	if (controllerTop < bodyTop || controllerLeft < bodyLeft) return false;
-	if ((controllerTop + c.getHeight()) > (bodyTop + this->getHeight() - 2)) return false;
-	if ((controllerLeft + c.getWidth() - 2) > (bodyLeft + this->getWidth() - 2)) return false;
+	if ((controllerTop + c->getHeight()) > (bodyTop + this->getHeight() - 2)) return false;
+	if ((controllerLeft + c->getWidth() - 2) > (bodyLeft + this->getWidth() - 2)) return false;
 
 	//checking if posision is clear against all the other controllers in the panel
 	return validSpaceWithControllers(c);
 }
 
-bool Panel::validSpaceWithControllers(Control c) {
+bool Panel::validSpaceWithControllers(Control* c) {
 	int size = controls.size();
 	bool valid = true;
 	for (int i = 0; i < size; i++) {
@@ -46,14 +46,14 @@ bool Panel::validSpaceWithControllers(Control c) {
 	return valid;
 }
 
-void Panel::mousePressed(short x, short y, DWORD click) {
+void Panel::mousePressed(short x, short y, bool isLeft) {
 	//check if click is in the panel limits
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
 	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
 
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {//check which controller owns the mouse position
-		controls[i]->mousePressed(x, y, click);
+		controls[i]->mousePressed(x, y, isLeft);
 	}
 }
 

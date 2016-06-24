@@ -32,13 +32,19 @@ void CheckList::deselectIndex(size_t index){
 
 void CheckList::keyDown(WORD click, CHAR chr){
 	if (click == VK_RETURN) {
-		
+		selectIndex(itemInFocus());
 	}
 	else if (click == VK_DOWN || click == VK_NUMPAD2) { // maybe add click == VK_TAB
-		
+		size_t item = itemInFocus();
+		if (item > controls.size()) item = 0;
+		else item += 1;
+		Control::setFocus(controls[item]);
 	}
 	else if (click == VK_UP || click == VK_NUMPAD8) {
-		
+		size_t item = itemInFocus();
+		if (item == 0) item = controls.size() - 1;
+		else item -= 1;
+		Control::setFocus(controls[item]);
 	}
 }
 
@@ -54,15 +60,7 @@ void CheckList::mousePress(short x, short y, DWORD click){
 	}
 }
 
-int CheckList::itemInFocus(){
-	int len = controls.size();
-	for (int i = 0; i < len; i++){
-		if (static_cast<ButtonItem*>(controls[i])->isChecked()){
-			return i;
-		}
-	}
-	return -1;
-}
+
 
 
 CheckList::~CheckList(){

@@ -8,12 +8,12 @@ bool ButtonItem::isChecked(){
 	return isCheck;
 }
 
-void ButtonItem::mousePressed(short x, short y, bool isLeft){
+/*void ButtonItem::mousePressed(short x, short y, bool isLeft){
 	if (clickable && (x >= getLeft() || x <= getLeft() + getWidth()) &&
 		(y >= getTop() || y <= getTop() + getHeight())){
 		listener->mousePressed(*this, x, y, isLeft);
 	}
-}
+}*/
 void ButtonItem::draw(Graphics graphics, int x, int y, size_t w){
 	Control::draw(graphics, getLeft(), getTop(), w);
 	if (isChecked()){

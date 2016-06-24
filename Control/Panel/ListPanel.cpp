@@ -19,6 +19,16 @@ void ListPanel::setBackGround(BackgroundColor color){
 	}
 }
 
+size_t ListPanel::itemInFocus(){
+	int len = controls.size();
+	for (size_t i = 0; i < len; i++){
+		if (static_cast<ButtonItem*>(controls[i])->isChecked()){
+			return i;
+		}
+	}
+	return -1;
+}
+
 ListPanel::~ListPanel()
 {
 }
