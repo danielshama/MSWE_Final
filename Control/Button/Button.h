@@ -15,7 +15,7 @@ class Button : public Control
 protected:
 	string text;
 	bool clickable;
-	MouseListener* listener;
+	MouseListener& listener;
 public:
 	Button(int width, string text);
 
