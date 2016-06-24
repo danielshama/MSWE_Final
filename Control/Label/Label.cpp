@@ -15,8 +15,8 @@ void Label::setValue(string val) {
 	value = val;
 }
 
-void Label::draw(Graphics graphics, int, int, size_t) {
-
+void Label::draw(Graphics graphics, int x , int y, size_t s) {
+	Control::draw(graphics, x, y, s);
 	graphics.setCursorVisibility(false);
 	graphics.write(getBodyLeft(),getBodyTop(),makeStringInTheMiddle(getWidth(), value));
 }

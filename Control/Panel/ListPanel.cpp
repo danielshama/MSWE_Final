@@ -1,7 +1,7 @@
 #include "ListPanel.h"
 
 
-ListPanel::ListPanel(int height, int width, vector<string> options) :Panel(height, width){
+ListPanel::ListPanel(int height, int width, vector<string> options) : Panel(height, width){
 }
 
 void ListPanel::setForeground(ForegroundColor color){
