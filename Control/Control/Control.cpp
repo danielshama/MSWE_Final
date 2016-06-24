@@ -116,7 +116,7 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 
 void Control::keyDown(WORD, CHAR){} 
 
-void Control::mousePressed(short x, short y, DWORD click){
+void Control::mousePressed(short x, short y, bool isLeft){
 	//check if click is in the panel limits
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
 	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
@@ -127,14 +127,14 @@ void Control::mousePressed(short x, short y, DWORD click){
 bool Control::canGetFocus(){
 	return isfocusable;
 }
-bool Control::validSpace(Control c){
+bool Control::validSpace(Control* c){
 	//take care for the border
-	if ((c.getLeft() + c.getWidth()) < getLeft() ||
-		(getLeft() + getWidth()) < c.getLeft()) {
+	if ((c->getLeft() + c->getWidth()) < getLeft() ||
+		(getLeft() + getWidth()) < c->getLeft()) {
 		return true;
 	}
-	else if ( (c.getTop() + c.getHeight() ) > getTop() ||
-		(getTop() + getHeight()) < c.getTop()) {
+	else if ( (c->getTop() + c->getHeight() ) > getTop() ||
+		(getTop() + getHeight()) < c->getTop()) {
 		return true;;
 	}
 	return false;

@@ -38,9 +38,9 @@ public:
 	vector<int> getBorderTypeCorners();
 	virtual void draw(Graphics graphics, int, int, size_t);
 	virtual void keyDown(WORD, CHAR);
-	virtual void mousePressed(short, short, DWORD);
+	virtual void mousePressed(short, short, bool) = 0;
 	bool canGetFocus();
-	bool validSpace(Control c); //on me
+	bool validSpace(Control* c); //on me
 	bool isFocus();
 	bool isVisible();
 	short getLeft();

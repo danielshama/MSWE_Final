@@ -13,7 +13,6 @@ void Button::draw(Graphics graphics, int x, int y, size_t w){
 void Button::mousePressed(short x, short y, bool isLeft){
 	if (clickable && (x >= getLeft() || x <= getLeft() + getWidth()) &&
 		(y >= getTop() || y <= getTop() + getHeight())){
-
 		listener->mousePressed(*this, x, y, isLeft);
 	}
 }
@@ -21,7 +20,8 @@ void Button::setValue(string value){
 	text = value;
 }
 void Button::addListener(MouseListener& listnr){
-	listener = &listnr;
+	MouseListener* listener 
+	listener = listener;
 }
 string Button::getValue(){
 	return text;
