@@ -36,8 +36,7 @@ void ListPanel::keyDown(WORD click, CHAR chr){
 			controls[item]->unfocus();
 			if (item >= controls.size() - 1) item = 0;
 			else item += 1;
-		}
-		else item = 0;
+		} else item = 0;
 		controls[item]->focus();
 	}
 	else if (click == VK_UP || click == VK_NUMPAD8) {
@@ -47,8 +46,7 @@ void ListPanel::keyDown(WORD click, CHAR chr){
 			controls[item]->unfocus();
 			if (item == 0) item = controls.size() - 1;
 			else item -= 1;
-		}
-		else item = 0;
+		} else item = 0;
 		controls[item]->focus();
 	}
 }
