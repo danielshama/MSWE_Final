@@ -21,7 +21,7 @@ void ButtonItem::draw(Graphics graphics, int x, int y, size_t w){
 		graphics.setBackground(graphics.convertToColor(getBackGround()));
 		graphics.setForeground(graphics.convertToColor(getForeground()));
 	}
-	graphics.write(getBodyLeft(), getBodyTop(), text);
+	graphics.write(getBodyLeft(), getBodyTop(), getValue());
 	graphics.resetColors();
 }
 void ButtonItem::toggle(){

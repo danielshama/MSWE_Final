@@ -19,7 +19,6 @@ class Control
 	BorderType borderType;
 
 public:
-
 	Control(int width);
 	void show();
 	void hide();
