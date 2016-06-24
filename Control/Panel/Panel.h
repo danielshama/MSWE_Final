@@ -17,6 +17,7 @@ public:
 	void getAllControls(vector<Control *> controls);
 	void draw(Graphics graphics, int, int, size_t);
 	virtual void mousePressed(short, short, bool);
+	void keyDown(WORD, CHAR){}
 	void setLocation(COORD);
 
 	~Panel();

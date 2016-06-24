@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(int width, string text) : Control(width), text(text), clickable(true), listener(EmptyListener()){
+Button::Button(int width, string text) : Control(width), text(text), clickable(true), listener(&EmptyListener()){
 }
 
 void Button::draw(Graphics graphics, int x, int y, size_t w){
@@ -11,16 +11,20 @@ void Button::draw(Graphics graphics, int x, int y, size_t w){
 	graphics.resetColors();
 }
 void Button::mousePressed(short x, short y, bool isLeft){
-	if (clickable && (x >= getLeft() || x <= getLeft() + getWidth()) &&
-		(y >= getTop() || y <= getTop() + getHeight())){
-		listener.mousePressed(*this, x, y, isLeft);
+	if (clickable && 
+		x > getLeft() && 
+		x < getLeft() + getWidth() &&
+		y > getTop() && 
+		y < getTop() + getHeight()){
+
+		listener->mousePressed(*this, x, y, isLeft);
 	}
 }
 void Button::setValue(string value){
 	text = value;
 }
 void Button::addListener(MouseListener& listnr){
-	listener = listener;
+	listener = &listnr;
 }
 string Button::getValue(){
 	return text;

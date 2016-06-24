@@ -13,8 +13,8 @@ int main(VOID){
 	CheckList cName(14,30,strings);
 	cName.setBorder(BorderType::Double);
 	Control::setFocus(&cName);
-	cName.setBackGround(BackgroundColor::Green);
-	cName.setForeground(ForegroundColor::Blue);
+	//cName.setBackGround(BackgroundColor::Green);
+	//cName.setForeground(ForegroundColor::Blue);
 	p.addControl(&cName, 15, 15);
 	EventEngine engine;
 	engine.run(p);

@@ -6,13 +6,11 @@
 using namespace std;
 
 struct MouseListener{
-	MouseListener() {}
 	virtual void mousePressed(Control& b, short x, short y, bool isLeft) = 0;
 };
 
 struct EmptyListener: public MouseListener{
-	EmptyListener() {}
-	void mousePressed(Control& b, short x, short y, bool isLeft){};
+	virtual void mousePressed(Control& b, short x, short y, bool isLeft){};
 };
 
 class Button : public Control
@@ -20,7 +18,7 @@ class Button : public Control
 protected:
 	string text;
 	bool clickable;
-	MouseListener& listener;
+	MouseListener* listener;
 public:
 	Button(int width, string text);
 
@@ -29,6 +27,7 @@ public:
 	void setValue(string value);
 	string getValue();
 	void addListener(MouseListener&);
+	void keyDown(WORD, CHAR){};
 
 	~Button();
 };

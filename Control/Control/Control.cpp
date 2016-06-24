@@ -114,8 +114,6 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 	graphics.write(location.X, location.Y + (height - 1), str);
 }
 
-void Control::keyDown(WORD, CHAR){} 
-
 void Control::mousePressed(short x, short y, bool isLeft){
 	//check if click is in the panel limits
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
