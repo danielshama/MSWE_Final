@@ -86,6 +86,11 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonItem.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Graphics\Graphics.vcxproj">
+      <Project>{bbeea1e1-85e6-4106-94ef-4c11e2e1dc61}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

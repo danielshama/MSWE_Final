@@ -20,7 +20,7 @@ void Button::setValue(string value){
 	text = value;
 }
 void Button::addListener(MouseListener& listnr){
-	MouseListener* listener 
+	MouseListener* listener;
 	listener = listener;
 }
 string Button::getValue(){

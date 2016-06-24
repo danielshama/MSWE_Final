@@ -20,7 +20,7 @@ public:
 	Button(int width, string text);
 
 	void draw(Graphics graphics, int x, int y, size_t w);
-	virtual void mousePressed(short, short, bool);
+	zzvoid mousePressed(short, short, bool);
 	void setValue(string value);
 	string getValue();
 	void addListener(MouseListener&);
