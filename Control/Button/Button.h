@@ -10,9 +10,9 @@ struct MouseListener{
 	virtual void mousePressed(Control& b, short x, short y, bool isLeft) = 0;
 };
 
-struct MouseListener{
-	MouseListener() {}
-	virtual void mousePressed(Control& b, short x, short y, bool isLeft) = 0;
+struct EmptyListener: public MouseListener{
+	EmptyListener() {}
+	void mousePressed(Control& b, short x, short y, bool isLeft){};
 };
 
 class Button : public Control
@@ -25,7 +25,7 @@ public:
 	Button(int width, string text);
 
 	void draw(Graphics graphics, int x, int y, size_t w);
-	zzvoid mousePressed(short, short, bool);
+	void mousePressed(short, short, bool);
 	void setValue(string value);
 	string getValue();
 	void addListener(MouseListener&);
