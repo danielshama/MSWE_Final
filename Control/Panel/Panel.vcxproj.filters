@@ -18,9 +18,15 @@
     <ClInclude Include="Panel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ListPanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Panel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

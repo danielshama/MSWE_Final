@@ -28,12 +28,14 @@ public:
 	ForegroundColor getForeground();
 	BackgroundColor getBackGround();
 	void setBorder(BorderType type);
-	void setLocation(COORD);
+	virtual void setLocation(COORD);
+	COORD getLocation();
 	void focus();
 	void unfocus();
 	BorderType getBorderType();
 	char getBorderTypeHorizontal();
 	char getBorderTypeVertical();
+	vector<int> getBorderTypeCorners();
 	virtual void draw(Graphics graphics, int, int, size_t);
 	virtual void keyDown(WORD, CHAR);
 	virtual void mousePressed(short, short, DWORD);
