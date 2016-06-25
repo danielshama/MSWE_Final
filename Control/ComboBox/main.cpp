@@ -1,19 +1,20 @@
-#include "CheckList.h"
+#include "ComboBox.h"
 #include "../EventEngine/EventEngine.h"
 
-int main(VOID){
-	Panel p(25, 50);
+int main(VOID) {
+	Panel p(30, 60);
 	p.setLocation({ 10, 10 });
 	p.setBorder(BorderType::Single);
 	vector<string> strings;
-	strings.push_back("aba");
-	strings.push_back("fsdf");
-	strings.push_back("khj");
-	strings.push_back("werewr");
-	CheckList cName(14,30,strings);
+	strings.push_back("item1");
+	strings.push_back("item2");
+	strings.push_back("item3");
+	strings.push_back("item4");
+	strings.push_back("item5");
+	ComboBox cName(30, strings);
 	cName.setBorder(BorderType::Double);
 	Control::setFocus(&cName);
-	cName.setBackGround(BackgroundColor::Green);
+	cName.setBackGround(BackgroundColor::Orange);
 	//cName.setForeground(ForegroundColor::Blue);
 	p.addControl(&cName, 15, 15);
 	EventEngine engine;
