@@ -8,6 +8,7 @@ void Button::draw(Graphics graphics, int x, int y, size_t w){
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 	graphics.write(getBodyLeft(), getBodyTop(), getValue());
+	graphics.resetColors();
 }
 
 void Button::mousePressed(short x, short y, bool isLeft){

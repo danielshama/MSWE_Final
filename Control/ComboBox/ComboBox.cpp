@@ -1,13 +1,14 @@
 #include "ComboBox.h"
 
 
-ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), width, options), closeHeight(5), isOpen(false){
+ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), width, options), 
+						closeHeight(5), isOpen(false), choosenIndex(0){
 	int len = options.size();
 	openHeight = (len + 1) * 3 + 2;
 	setHeight(openHeight);
 	int wid = getWidth();
 	//create the label
-	choosen = new Label(getWidth() - 7, options[0]);
+	Label *choosen = new Label(getWidth() - 7, options[0]);
 	choosen->setBorder(BorderType::Double);
 	addControl(choosen, getBodyLeft(), getBodyTop());
 
@@ -15,14 +16,14 @@ ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), w
 	Button *toggleBtn = new Button(1, "+");
 	toggleBtn->setBackGround(BackgroundColor::Blue);
 	toggleBtn->setBorder(BorderType::Single);
-	SelectListener* lsnr = new SelectListener(*this);
+	ToggleListener* lsnr = new ToggleListener(*this);
 	toggleBtn->addListener(*lsnr);
 	addControl(toggleBtn, getBodyLeft() + getWidth() - 5, getBodyTop());
 
 	//create the options
 	string str = string(Control::getWidth(),' ');
 	for (int i = 0; i < len; i++) {
-		string toInsert = (options[i]+str).substr(0, getWidth());
+		string toInsert = (options[i]+str).substr(0, getWidth() - options[i].length() - 3);
 		ButtonItem *btn = new ButtonItem(toInsert, getWidth() - 4, i);
 		btn->setBorder(BorderType::Single);
 		SelectListener* lsnr = new SelectListener(*this);
@@ -36,15 +37,19 @@ ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), w
 
 
 size_t ComboBox::getSelectedIndex() {
-	return 1;
+	return choosenIndex;
 }
 
-void ComboBox::setSelectedIndex(size_t) {
+void ComboBox::setSelectedIndex(size_t index) {
+	choosenIndex = index;
+	string item = static_cast<Button*>(controls[index + 2])->getValue();
+	item = item.substr(4, getWidth());
+	static_cast<Label*>(controls[0])->setValue(item);
+	closeList();
 }
 
 
 void ComboBox::draw(Graphics graphics, int, int, size_t t) {
-	
 	Control::draw(graphics, getLeft(), getTop(), t);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
@@ -62,31 +67,60 @@ void ComboBox::draw(Graphics graphics, int, int, size_t t) {
 	graphics.resetColors();
 }
 
-void ComboBox::keyDown(WORD w, CHAR c) {
-
+void ComboBox::onDownKey() {
+	if (!isOpen) return;
+	int item = itemInFocus();
+	if (item != -1) {
+		controls[item]->unfocus();
+		if (item >= controls.size() - 1) item = 2;
+		else item += 1;
+	}
+	else item = 2;
+	controls[item]->focus();
 }
+void ComboBox::onUpKey() {
+	if (!isOpen) return;
+	int item = itemInFocus();
+	if (item != -1) {
+		controls[item]->unfocus();
+		if (item == 2) item = controls.size() - 1;
+		else item -= 1;
+	}
+	else item = 2;
+	controls[item]->focus();
+}
+
+void ComboBox::onEnterKey(){
+	if (itemInFocus() == -1 || !isOpen) return;
+	setSelectedIndex(itemInFocus() - 2);
+}
+
 void ComboBox::mousePressed(short x, short y , bool isLeft) {
-	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
-	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
+	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) closeList();
+	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) closeList();
 	Control::setFocus(this);
 	if (x == getBodyLeft() + getWidth() - 5 && y == getBodyTop()) {
 		controls[1]->mousePressed(x, y, isLeft);
-
 	}
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {
 		controls[i]->mousePressed(x, y, isLeft);
 	}
 }
+
 void ComboBox::toggle() {
-	if (isOpen) {
-		isOpen = false;
-		setHeight(closeHeight);
-	}
-	else {
-		isOpen = true;
-		setHeight(openHeight);
-	}
+	if (isOpen) closeList();
+	else openList();
+}
+
+void ComboBox::closeList() {
+	isOpen = false;
+	setHeight(closeHeight);
+}
+
+void ComboBox::openList() {
+	isOpen = true;
+	setHeight(openHeight);
 }
 
 ComboBox::~ComboBox()

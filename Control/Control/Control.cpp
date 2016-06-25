@@ -97,6 +97,8 @@ COORD Control::getLocation(){
 	return location;
 }
 void Control::draw(Graphics graphics, int x, int y, size_t w){
+	graphics.setBackground(graphics.convertToColor(getBackGround()));
+	graphics.setForeground(graphics.convertToColor(getForeground()));
 	string str(width, getBorderTypeHorizontal());
 	vector<int> corners = getBorderTypeCorners();
 	str[0] = corners[0];
@@ -112,6 +114,7 @@ void Control::draw(Graphics graphics, int x, int y, size_t w){
 	str[0] = corners[2];
 	str[width - 1] = corners[3];
 	graphics.write(location.X, location.Y + (height - 1), str);
+	graphics.resetColors();
 }
 
 void Control::mousePressed(short x, short y, bool isLeft){

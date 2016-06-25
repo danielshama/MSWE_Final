@@ -17,8 +17,11 @@ void Label::setValue(string val) {
 
 void Label::draw(Graphics graphics, int x , int y, size_t s) {
 	Control::draw(graphics, x, y, s);
+	graphics.setBackground(graphics.convertToColor(getBackGround()));
+	graphics.setForeground(graphics.convertToColor(getForeground()));
 	graphics.setCursorVisibility(false);
-	graphics.write(getBodyLeft(),getBodyTop(),makeStringInTheMiddle(getWidth(), value));
+	graphics.write(getBodyLeft(),getBodyTop(), value);
+	graphics.resetColors();
 }
 
 string Label::makeStringInTheMiddle(int width, string value) {
