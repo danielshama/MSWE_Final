@@ -11,6 +11,7 @@ void ListPanel::setForeground(ForegroundColor color){
 		controls[i]->setForeground(color);
 	}
 }
+
 void ListPanel::setBackGround(BackgroundColor color){
 	Control::setBackGround(color);
 	int size = controls.size();
@@ -50,6 +51,7 @@ void ListPanel::onDownKey(){
 	else item = 0;
 	controls[item]->focus();
 }
+
 void ListPanel::onUpKey(){
 	int item = itemInFocus();
 
@@ -61,6 +63,7 @@ void ListPanel::onUpKey(){
 	else item = 0;
 	controls[item]->focus();
 }
+
 void ListPanel::onEnterKey(){} //noImpl.
 
 void ListPanel::switchFocus(int indx){
