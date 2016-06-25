@@ -16,12 +16,13 @@ class CheckList : public ListPanel
 	private:
 		Control& _c;
 	};
+protected:
+	void onEnterKey();
 public:
 	CheckList(int height, int width, vector<string> options);
 	vector<size_t> getSelectedIndices(); //for on the buttonItems and chks who is checked
 	void selectIndex(size_t index);
 	void deselectIndex(size_t index);
-	void keyDown(WORD, CHAR);
 	void mousePressed(short, short, bool);
 	~CheckList();
 };
