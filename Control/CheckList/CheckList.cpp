@@ -29,11 +29,8 @@ void CheckList::deselectIndex(size_t index){
 	static_cast<ButtonItem*>(controls[index])->toggle();
 }
 
-void CheckList::keyDown(WORD click, CHAR chr){
-	if (click == VK_RETURN) {
-		selectIndex(itemInFocus());
-	}
-	else ListPanel::keyDown(click, chr);
+void CheckList::onEnterKey(){
+	selectIndex(itemInFocus());
 }
 
 void CheckList::mousePressed(short x, short y, bool isLeft){
