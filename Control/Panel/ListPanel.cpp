@@ -72,6 +72,14 @@ void ListPanel::switchFocus(int indx){
 	controls[indx]->focus();
 }
 
+void ListPanel::clearAllFocus() {
+	int size = controls.size();
+	for (int i = 0; i < size; i++) {
+		if(static_cast<ButtonItem*>(controls[i])->isChecked())
+			static_cast<ButtonItem*>(controls[i])->toggle();
+	}
+}
+
 
 ListPanel::~ListPanel()
 {

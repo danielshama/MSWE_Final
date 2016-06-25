@@ -31,6 +31,7 @@ void ButtonItem::toggle(){
 	chkedText = tmp;
 }
 
+
 size_t ButtonItem::getIndex(){
 	return index;
 }

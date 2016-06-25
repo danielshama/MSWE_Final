@@ -19,7 +19,7 @@ public:
 	string getValue();
 	void draw(Graphics graphics, int, int, size_t);
 	void keyDown(WORD, CHAR);
-	void mousePressed(short, short, DWORD);
+	void mousePressed(short, short, bool);
 	~TextBox();
 };
 

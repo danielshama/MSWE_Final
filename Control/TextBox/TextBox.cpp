@@ -66,7 +66,7 @@ void TextBox::keyDown(WORD kind, CHAR c) {
 	}
 }
 
-void TextBox::mousePressed(short x, short y, DWORD d){
+void TextBox::mousePressed(short x, short y, bool b){
 	//check if click is in the textBox limits
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
 	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;

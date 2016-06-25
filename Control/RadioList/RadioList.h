@@ -1,28 +1,32 @@
 #pragma once
 
-#include "../Panel/Panel.h"
+#include "../Panel/ListPanel.h"
+#include "../Button/ButtonItem.h"
 
 
-struct SelectListener : public MouseListener{
-	SelectListener(Control& c) : _c(c){}
-	void mousePressed(Button& b, int x, int y, bool isLeft){
-		RadioList& tmp = static_cast<RadioList&>(_c);
-		tmp.setSelectedIndex(static_cast<ButtonItem&>(b).getIndex());
-	}
-private:
-	Control& _c;
-};
 
-class RadioList : public Panel
+
+class RadioList : public ListPanel
 {
+
+	struct SelectListener : public MouseListener {
+		SelectListener(Control& c) : _c(c) {}
+		void mousePressed(Control& b, short x, short y, bool isLeft) {
+			RadioList& tmp = static_cast<RadioList&>(_c);
+			int index = static_cast<ButtonItem&>(b).getIndex();
+			tmp.setSelectedIndex(index);
+		}
+	private:
+		Control& _c;
+	};
+
 	size_t selectedIndex;
+	void onEnterKey();
+	void mousePressed(short x, short y, bool isLeft);
 public:
 	RadioList(int height, int width, vector<string> options);
 	size_t getSelectedIndex();
 	void setSelectedIndex(size_t index);
-	void draw(Graphics graphics, int, int, size_t);
-	void keydown(WORD, CHAR);
-	void mousePress(short, short, DWORD);
 	~RadioList();
 };
 
