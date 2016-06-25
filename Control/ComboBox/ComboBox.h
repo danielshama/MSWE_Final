@@ -32,12 +32,13 @@ class ComboBox : public ListPanel
 	Label *choosen;
 	size_t selectedIndex;
 	bool isOpen;
+	int openHeight, closeHeight;
 public:
 	//add plus btn and label - give the btn listener and remember whe label index for edit the text
 	ComboBox(int width, vector<string> options); //need to caculat the heigth and send to Panel const.
 	size_t getSelectedIndex();
 	void setSelectedIndex(size_t);
-	//void draw(Graphics graphics, int, int, size_t);
+	void draw(Graphics graphics, int, int, size_t);
 	void keyDown(WORD, CHAR);
 	void mousePressed(short, short, bool);
 	void toggle();
