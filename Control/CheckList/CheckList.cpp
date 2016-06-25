@@ -8,6 +8,8 @@ CheckList::CheckList(int height, int width, vector<string> options) : ListPanel(
 		btn->setBorder(BorderType::Single);
 		SelectListener* lsnr = new SelectListener(*this);
 		btn->addListener(*lsnr);
+
+		//add it in the right place in the ListPanel include borders
 		addControl(btn, getBodyLeft(), getBodyTop() + (i * 3));
 	}
 }
@@ -25,6 +27,7 @@ vector<size_t> CheckList::getSelectedIndices(){
 void CheckList::selectIndex(size_t index){
 	static_cast<ButtonItem*>(controls[index])->toggle();
 }
+
 void CheckList::deselectIndex(size_t index){
 	static_cast<ButtonItem*>(controls[index])->toggle();
 }
@@ -34,11 +37,14 @@ void CheckList::onEnterKey(){
 }
 
 void CheckList::mousePressed(short x, short y, bool isLeft){
+	//check if its in the panel
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
 	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
 
+	//take the global focus
 	Control::setFocus(this);
 
+	//pass the click to the childrens
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {
 		controls[i]->mousePressed(x, y, isLeft);

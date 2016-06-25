@@ -17,10 +17,11 @@ class CheckList : public ListPanel
 		Control& _c;
 	};
 protected:
+	//we need to override only the enter click
 	void onEnterKey();
 public:
 	CheckList(int height, int width, vector<string> options);
-	vector<size_t> getSelectedIndices(); //for on the buttonItems and chks who is checked
+	vector<size_t> getSelectedIndices(); 
 	void selectIndex(size_t index);
 	void deselectIndex(size_t index);
 	void mousePressed(short, short, bool);
