@@ -11,7 +11,7 @@ public:
 
 	void setValue(string value);
 	void draw(Graphics graphics, int, int, size_t);
-	string makeStringInTheMiddle(int width, string value);
+	static string makeStringInTheMiddle(int width, string value);
 	string getValue();
 	void keyDown(WORD, CHAR) {};
 	void mousePressed(short, short, bool) {};
