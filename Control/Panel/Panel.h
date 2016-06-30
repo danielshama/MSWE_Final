@@ -10,7 +10,6 @@ class Panel : public Control
 	bool validSpaceWithControllers(Control* c);
 protected:
 	vector<Control *> controls;
-	static void toggleMsgBox();
 
 public:
 	Panel(int height, int width);
@@ -22,6 +21,7 @@ public:
 	virtual void keyDown(WORD, CHAR){}
 	void setLocation(COORD);
 	static bool getMsgOpen();
+	static void toggleMsgBox();
 
 	~Panel();
 };

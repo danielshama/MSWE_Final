@@ -13,7 +13,7 @@ NumericBox::NumericBox(int width, int min, int max):Panel(5,width)
 	//minusBtn->setHeight(1);
 	//Create label the number starts from the minimum.
 	Label *labelVal = new Label( width - 8 ,to_string(min));
-	labelVal->setForeground(ForegroundColor::Blue);
+	labelVal->setForeground(getForeground());
 	
 	//Create '+' btn and attach listener.
 	Button *plusBtn = new Button(1,"+");
@@ -36,7 +36,8 @@ void NumericBox::setValue(int val) {
 	
 	if ( val < min || val >max) return;
 	else {
-		static_cast<Label*>(controls[1])->setValue(static_cast<Label *>(controls[1])->makeStringInTheMiddle(controls[1]->getWidth()-1, to_string(val)));
+		static_cast<Label*>(controls[1])->setValue(to_string(val));
+		string num1 = to_string(val);
 	}
 };
 int NumericBox::getValue() {	

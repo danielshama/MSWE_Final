@@ -33,6 +33,7 @@ bool Panel::validSpace(Control* c) {
 	if ((controllerLeft + c->getWidth() - 2) > (bodyLeft + this->getWidth() - 2)) return false;
 
 	//checking if posision is clear against all the other controllers in the panel
+	if (c->getLayer() == 2) return true;
 	return validSpaceWithControllers(c);
 }
 
@@ -40,6 +41,7 @@ bool Panel::validSpaceWithControllers(Control* c) {
 	int size = controls.size();
 	bool valid = true;
 	for (int i = 0; i < size; i++) {
+		if (controls[i]->getLayer() == 2) continue;
 		if (!controls[i]->validSpace(c)) {
 			valid = false;
 			break;

@@ -137,6 +137,12 @@
     <ProjectReference Include="..\Label\Label.vcxproj">
       <Project>{d34ee071-f88c-48cf-a4df-f436e9bbf49d}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\MessegeBox\MessegeBox.vcxproj">
+      <Project>{3434c046-7aed-42e6-89b7-9adae0cd8006}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\NumericBox\NumericBox.vcxproj">
+      <Project>{c49d5064-751a-4524-958d-4747c45ac0ab}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Panel\Panel.vcxproj">
       <Project>{b3bf2d68-2dfc-4742-9a9e-1b22515d0f4d}</Project>
     </ProjectReference>

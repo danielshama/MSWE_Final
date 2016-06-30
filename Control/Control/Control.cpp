@@ -14,9 +14,11 @@ Control::Control(int _width) :
 
 void Control::show(){
 	visible = true;
+	isfocusable = true;
 }
 void Control::hide(){
 	visible = false;
+	isfocusable = false;
 }
 
 int Control::getLayer() {
@@ -108,11 +110,10 @@ COORD Control::getLocation(){
 void Control::draw(Graphics graphics, int x, int y, size_t w){
 	if (isFocus()) {
 		graphics.setForeground(graphics.convertToColor(ForegroundColor::Purple));
-		graphics.setBackground(graphics.convertToColor(BackgroundColor::Black));
 	} else {
-		graphics.setBackground(graphics.convertToColor(getBackGround()));
 		graphics.setForeground(graphics.convertToColor(getForeground()));
 	}
+	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	string str(width, getBorderTypeHorizontal());
 	vector<int> corners = getBorderTypeCorners();
 	str[0] = corners[0];

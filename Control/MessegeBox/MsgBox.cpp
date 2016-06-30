@@ -3,11 +3,12 @@
 
 MsgBox::MsgBox(int height, int width) : Panel(height, width)
 {
-	toggleMsgBox();
+	//toggleMsgBox();
 	setLayer(2);
+	isfocusable = false;
 	title = new Label(width-2, "temp");
 	text = new Label(width-2, "text text text");
-	okBtn = new Button(width / 2, "OK");
+	okBtn = new Button(width / 2, Label::makeStringInTheMiddle(width/2, "OK"));
 	CloseListener *closeListener = new CloseListener(*this);
 	okBtn->addListener(*closeListener);
 	title->setLayer(2);
@@ -39,6 +40,8 @@ void MsgBox::setText(string text) {
 void MsgBox::setTitle(string text) {
 	title->setValue(text);
 }
+
+
 
 void MsgBox::keyDown(WORD click, CHAR chr){
 	if (click == VK_RETURN) {

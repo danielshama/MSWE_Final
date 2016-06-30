@@ -8,8 +8,9 @@ bool ButtonItem::isChecked(){
 	return isCheck;
 }
 
-void ButtonItem::draw(Graphics graphics, int x, int y, size_t w){
-	Control::draw(graphics, getLeft(), getTop(), w);
+void ButtonItem::draw(Graphics graphics, int x, int y, size_t layer){
+	if (getLayer() != layer) return;
+	Control::draw(graphics, getLeft(), getTop(), layer);
 	if (isFocus()){
 		//insidout
 		graphics.setBackground(graphics.convertToColor(getForeground()));

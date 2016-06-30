@@ -1,6 +1,7 @@
 #include "Button.h"
 
 Button::Button(int width, string text) : Control(width), text(text), clickable(true), listener(&EmptyListener()){
+
 }
 
 void Button::draw(Graphics graphics, int x, int y, size_t layer){
