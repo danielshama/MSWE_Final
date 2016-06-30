@@ -29,6 +29,8 @@ NumericBox::~NumericBox()
 
 void NumericBox::setValue(int val) {
 	if (value + val < min || value + val >max) return;
-	else value += val;
+	else {
+		value += val;
+	}
 };
 int NumericBox::getValue() {return value;};
