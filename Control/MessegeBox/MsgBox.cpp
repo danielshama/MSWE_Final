@@ -7,7 +7,7 @@ MsgBox::MsgBox(int height, int width) : Panel(height, width)
 	setLayer(2);
 	title = new Label(width-2, "temp");
 	text = new Label(width-2, "text text text");
-	okBtn = new Button(width / 2, "OK");
+	okBtn = new Button(width / 2, Label::makeStringInTheMiddle(width/2, "OK"));
 	CloseListener *closeListener = new CloseListener(*this);
 	okBtn->addListener(*closeListener);
 	title->setLayer(2);

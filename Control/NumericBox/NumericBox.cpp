@@ -36,7 +36,8 @@ void NumericBox::setValue(int val) {
 	
 	if ( val < min || val >max) return;
 	else {
-		static_cast<Label*>(controls[1])->setValue(static_cast<Label *>(controls[1])->makeStringInTheMiddle(controls[1]->getWidth()-1, to_string(val)));
+		static_cast<Label*>(controls[1])->setValue(to_string(val));
+		string num1 = to_string(val);
 	}
 };
 int NumericBox::getValue() {	
