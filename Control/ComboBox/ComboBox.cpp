@@ -96,8 +96,11 @@ void ComboBox::onEnterKey(){
 }
 
 void ComboBox::mousePressed(short x, short y , bool isLeft) {
-	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) closeList();
-	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) closeList();
+	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth()) ||
+		y < this->getTop() || (y > this->getTop() + this->getHeight())) {
+		closeList();
+		return;
+	}
 	Control::setFocus(this);
 	if (x == getBodyLeft() + getWidth() - 5 && y == getBodyTop()) {
 		controls[1]->mousePressed(x, y, isLeft);
