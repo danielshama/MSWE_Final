@@ -1,8 +1,9 @@
 #include "Label.h"
 
 
-Label::Label(int width, string value):Control(width)
+Label::Label(int width, string value) :Control(width)
 {
+	isfocusable = false;
 	if (width - value.size() < 2) setValue(value);
 	else {
 		setValue(makeStringInTheMiddle(width, value));

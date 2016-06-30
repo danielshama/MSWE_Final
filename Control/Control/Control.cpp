@@ -3,7 +3,7 @@
 
 
 Control::Control(int _width) : 
-	width(_width), isFocused(false), isfocusable(false), visible(true), height(1), layer(0){
+	width(_width), isFocused(false), isfocusable(true), visible(true), height(1), layer(0){
 	setBorder(BorderType::None);
 	setLocation({ 0, 0 });
 	width += 2;

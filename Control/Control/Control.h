@@ -11,13 +11,14 @@ enum class BorderType {Single, Double, None};
 class Control
 {
 	int width, height, layer;
-	bool isFocused, isfocusable, visible;
+	bool isFocused, visible;
 	COORD location;
 	COORD bodyLocation;
 	ForegroundColor foreground;
 	BackgroundColor background;
 	BorderType borderType;
-
+protected:
+	bool isfocusable;
 public:
 	Control(int width);
 	void show();
