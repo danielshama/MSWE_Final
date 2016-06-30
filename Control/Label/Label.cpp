@@ -31,3 +31,7 @@ string Label::makeStringInTheMiddle(int width, string value) {
 	str.insert(mid, value);
 	return str;
 }
+
+string Label::getValue() {
+	return value;
+}
