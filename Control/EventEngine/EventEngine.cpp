@@ -16,7 +16,7 @@ void EventEngine::run(Control &c)
 			_graphics.resetColors();
 			_graphics.clearScreen();
 			_graphics.setCursorVisibility(false);
-			for (size_t p = 0; p < 1; ++p) {
+			for (size_t p = 0; p < 3; p++) {
 				c.draw(_graphics, 0, 0, p);
 			}
 			redraw = false;
@@ -34,8 +34,10 @@ void EventEngine::run(Control &c)
 			{
 				auto code = record.Event.KeyEvent.wVirtualKeyCode;
 				auto chr = record.Event.KeyEvent.uChar.AsciiChar;
-				if (code == VK_TAB)
-					moveFocus(c, f);
+				if (code == VK_TAB) {
+					if (!Panel::getMsgOpen())
+						moveFocus(c, f);
+				}
 				else
 					f->keyDown(code, chr);
 				redraw = true;
@@ -74,6 +76,6 @@ void EventEngine::moveFocus(Control &main, Control *focused)
 	do
 		if (++it == controls.end())
 			it = controls.begin();
-	while (!(*it)->canGetFocus());
+	while (!(*it)->canGetFocus() && !(*it)->isVisible());
 	Control::setFocus(*it);
 }

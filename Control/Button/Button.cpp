@@ -3,8 +3,9 @@
 Button::Button(int width, string text) : Control(width), text(text), clickable(true), listener(&EmptyListener()){
 }
 
-void Button::draw(Graphics graphics, int x, int y, size_t w){
-	Control::draw(graphics, x, y, w);
+void Button::draw(Graphics graphics, int x, int y, size_t layer){
+	if (getLayer() != layer) return;
+	Control::draw(graphics, x, y, layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 	graphics.write(getBodyLeft(), getBodyTop(), getValue());
