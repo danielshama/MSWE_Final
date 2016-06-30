@@ -3,21 +3,24 @@
 
 ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), width, options), 
 						closeHeight(5), isOpen(false), choosenIndex(0){
+	setLayer(1);
 	int len = options.size();
 	openHeight = (len + 1) * 3 + 2;
 	setHeight(openHeight);
 	int wid = getWidth();
 	//create the label
 	Label *choosen = new Label(getWidth() - 7, options[0]);
-	choosen->setBorder(BorderType::Double);
+	choosen->setLayer(1);
+	choosen->setBorder(BorderType::Single);
 	addControl(choosen, getBodyLeft(), getBodyTop());
 
 	//create the open/close button
 	Button *toggleBtn = new Button(1, "+");
-	toggleBtn->setBackGround(BackgroundColor::Blue);
+	toggleBtn->setBackGround(BackgroundColor::Black);
 	toggleBtn->setBorder(BorderType::Single);
 	ToggleListener* lsnr = new ToggleListener(*this);
 	toggleBtn->addListener(*lsnr);
+	toggleBtn->setLayer(1);
 	addControl(toggleBtn, getBodyLeft() + getWidth() - 5, getBodyTop());
 
 	//create the options
@@ -25,14 +28,14 @@ ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), w
 	for (int i = 0; i < len; i++) {
 		string toInsert = (options[i]+str).substr(0, getWidth() - options[i].length() - 3);
 		ButtonItem *btn = new ButtonItem(toInsert, getWidth() - 4, i);
-		btn->setBorder(BorderType::Single);
+		btn->setLayer(1);
+		btn->setBorder(BorderType::None);
 		SelectListener* lsnr = new SelectListener(*this);
 		btn->addListener(*lsnr);
 		addControl(btn, getBodyLeft(), getBodyTop() + ((i+1) * 3));
 	}
 
 	setHeight(closeHeight);
-	toggle();
 }
 
 
@@ -49,19 +52,21 @@ void ComboBox::setSelectedIndex(size_t index) {
 }
 
 
-void ComboBox::draw(Graphics graphics, int, int, size_t t) {
-	Control::draw(graphics, getLeft(), getTop(), t);
+void ComboBox::draw(Graphics graphics, int, int, size_t layer) {
+	int la = getLayer();
+	if (getLayer() != layer) return;
+	Control::draw(graphics, getLeft(), getTop(), layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 	for (int i = 0; i < 2; i++) {
 		graphics.moveTo(controls[i]->getBodyLeft(), controls[i]->getBodyTop());
-		controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), t);
+		controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), layer);
 	}
 	if (isOpen) {
 		int size = controls.size();
 		for (int i = 2; i < size; i++) {
 			graphics.moveTo(controls[i]->getBodyLeft(), controls[i]->getBodyTop());
-			controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), t);
+			controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), layer);
 		}
 	}
 	graphics.resetColors();

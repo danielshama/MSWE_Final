@@ -5,8 +5,10 @@ Panel::Panel(int height, int width) : Control(width) {
 	setHeight(height);
 }
 
-void Panel::getAllControls(vector<Control *> controls) {
-	controls = this->controls;
+void Panel::getAllControls(vector<Control *> &cont) {
+	for (int i = 0; i < controls.size(); i++) {
+		cont.push_back(controls[i]);
+	}
 }
 
 bool Panel::addControl(Control *control, short x, short y) {
@@ -57,15 +59,16 @@ void Panel::mousePressed(short x, short y, bool isLeft) {
 	}
 }
 
-void Panel::draw(Graphics graphics, int x, int y, size_t t) {
-	Control::draw(graphics, getLeft(), getTop(), t);
+void Panel::draw(Graphics graphics, int x, int y, size_t layer) {
+	if (!isVisible()) return;
+	if (layer == getLayer()) Control::draw(graphics, getLeft(), getTop(), layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {
 		graphics.moveTo(controls[i]->getBodyLeft(), controls[i]->getBodyTop());
-		controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), t);
+		controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), layer);
 	}
 	graphics.resetColors();
 }
@@ -80,6 +83,13 @@ void Panel::setLocation(COORD coord) {
 		moveHer = controls[i]->getBodyLeft() - tmp.X;
 		controls[i]->setLocation({ coord.X + moveHer, coord.Y + moveVer});
 	}
+}
+
+void Panel::toggleMsgBox(){
+	isMsgBoxOpen = !isMsgBoxOpen;
+}
+bool Panel::getMsgOpen(){
+	return isMsgBoxOpen;
 }
 
 Panel::~Panel() {

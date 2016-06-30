@@ -5,12 +5,12 @@
 
 int main(void) {
 	Panel panel(25, 50);
-	NumericBox box(10, 4, 10);
-	box.setBackGround(BackgroundColor::Black);
+	NumericBox box(20, 10, 100);
+	box.setBackGround(BackgroundColor::Red);
 	box.setForeground(ForegroundColor::White);
 	panel.setLocation({ 3, 0 });
 	panel.setBorder(BorderType::Double);
-	panel.addControl(&box, 10, 5);
+	panel.addControl(&box, 5, 5);
 	EventEngine engine;
 	engine.run(panel);
 }

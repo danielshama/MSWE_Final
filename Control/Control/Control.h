@@ -10,7 +10,7 @@ enum class BorderType {Single, Double, None};
 
 class Control
 {
-	int width, height;
+	int width, height, layer;
 	bool isFocused, isfocusable, visible;
 	COORD location;
 	COORD bodyLocation;
@@ -22,6 +22,8 @@ public:
 	Control(int width);
 	void show();
 	void hide();
+	int getLayer();
+	void setLayer(int);
 	void setForeground(ForegroundColor color);
 	void setBackGround(BackgroundColor color);
 	ForegroundColor getForeground();
@@ -50,7 +52,7 @@ public:
 	int getHeight();
 	void setHeight(int);
 	void setWidth(int);
-	void getAllControls(vector<Control *> &controls);
+	virtual void getAllControls(vector<Control *> &controls) {}
 
 	static void setFocus(Control* c);
 	static Control* getFocus();

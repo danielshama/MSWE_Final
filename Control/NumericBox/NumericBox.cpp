@@ -2,23 +2,28 @@
 
 
 
-NumericBox::NumericBox(int width, int min, int max):Panel(1,width)
+NumericBox::NumericBox(int width, int min, int max):Panel(5,width)
 {
-	MinusListener minusListener(*this);
-	PlusListener plusListener(*this);
+	value = min;
+	MinusListener* minusListener = new MinusListener(*this);
+	PlusListener* plusListener = new PlusListener(*this);
 	//Create minus btn and attach listener.
 	Button *minusBtn = new Button(1,"-");
-	minusBtn->addListener(minusListener);
-	//Create label.
-	Label val( 5 ,to_string(min));
+	minusBtn->addListener(*minusListener);
+	//minusBtn->setHeight(1);
+	//Create label the number starts from the minimum.
+	Label *labelVal = new Label( width - 8 ,to_string(min));
+	labelVal->setForeground(ForegroundColor::Blue);
+	
 	//Create '+' btn and attach listener.
 	Button *plusBtn = new Button(1,"+");
-	plusBtn->addListener(plusListener);
+	//plusBtn->setHeight(1);
+	plusBtn->addListener(*plusListener);
 	
-	addControl(minusBtn, getBodyLeft() + getWidth() - 2, getBodyTop());
-	addControl(&val, getBodyLeft() + 1, getBodyTop());
-	addControl(plusBtn, getBodyLeft() + 2, getBodyTop());
+	addControl(minusBtn, getBodyLeft(), getBodyTop());
 	this->min = min;
+	addControl(labelVal, getBodyLeft() + minusBtn->getWidth(), getBodyTop());
+	addControl(plusBtn, labelVal->getLeft() + labelVal->getWidth(), getBodyTop());
 	this->max = max;
 }
 
@@ -28,9 +33,20 @@ NumericBox::~NumericBox()
 }
 
 void NumericBox::setValue(int val) {
-	if (value + val < min || value + val >max) return;
+	
+	if ( val < min || val >max) return;
 	else {
-		value += val;
+		static_cast<Label*>(controls[1])->setValue(static_cast<Label *>(controls[1])->makeStringInTheMiddle(controls[1]->getWidth()-1, to_string(val)));
 	}
 };
-int NumericBox::getValue() {return value;};
+int NumericBox::getValue() {	
+	string val = static_cast<Label*>(controls[1])->getValue();
+	int size = val.length();
+	string num;
+	for (int i = 0; i < size; i++) {
+		if (val.at(i) != '\0') {
+			num += val.at(i);
+		}
+	}
+	return stoi(num);
+};

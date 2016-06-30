@@ -3,7 +3,7 @@
 
 
 Control::Control(int _width) : 
-	width(_width), isFocused(false), isfocusable(false), visible(true), height(1){
+	width(_width), isFocused(false), isfocusable(false), visible(true), height(1), layer(0){
 	setBorder(BorderType::None);
 	setLocation({ 0, 0 });
 	width += 2;
@@ -18,6 +18,15 @@ void Control::show(){
 void Control::hide(){
 	visible = false;
 }
+
+int Control::getLayer() {
+	return layer;
+}
+
+void Control::setLayer(int l) {
+	layer = l;
+}
+
 void Control::focus(){
 	isFocused = true;
 }
@@ -97,8 +106,13 @@ COORD Control::getLocation(){
 	return location;
 }
 void Control::draw(Graphics graphics, int x, int y, size_t w){
-	graphics.setBackground(graphics.convertToColor(getBackGround()));
-	graphics.setForeground(graphics.convertToColor(getForeground()));
+	if (isFocus()) {
+		graphics.setForeground(graphics.convertToColor(ForegroundColor::Purple));
+		graphics.setBackground(graphics.convertToColor(BackgroundColor::Black));
+	} else {
+		graphics.setBackground(graphics.convertToColor(getBackGround()));
+		graphics.setForeground(graphics.convertToColor(getForeground()));
+	}
 	string str(width, getBorderTypeHorizontal());
 	vector<int> corners = getBorderTypeCorners();
 	str[0] = corners[0];
@@ -175,9 +189,6 @@ void Control::setWidth(int w) {
 	width = w;
 }
 
-void Control::getAllControls(vector<Control *> &controls){
-
-}
 	
 void Control::setFocus(Control* c){
 	if (currentFocused != NULL)
@@ -185,9 +196,12 @@ void Control::setFocus(Control* c){
 	currentFocused = c;
 	c->focus();
 }
+
 Control* Control::getFocus(){
 	return currentFocused;
 }
+
+
 Control::~Control(){
 
 }

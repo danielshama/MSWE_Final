@@ -12,8 +12,9 @@ string TextBox::getValue() {
 	return value;
 }
 
-void TextBox::draw(Graphics graphics, int x, int y, size_t w) {
-	Control::draw(graphics, x, y, w);
+void TextBox::draw(Graphics graphics, int x, int y, size_t layer) {
+	if (getLayer() != layer) return;
+	Control::draw(graphics, x, y, layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 	string toPrint = value.substr(0, getWidth() - 2);
