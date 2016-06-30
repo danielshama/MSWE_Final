@@ -1,26 +1,27 @@
 #include <string>
-#include "../EventEngine/EventEngine.h"
-#include "../TextBox/TextBox.h"
-#include "../Label/Label.h"
-#include "../Button/Button.h"
-#include "../Panel/Panel.h"
 #include "../CheckList/CheckList.h"
-#include "../RadioList/RadioList.h"
 #include "../ComboBox/ComboBox.h"
+#include "../Graphics/Graphics.h"
+#include "../TextBox/TextBox.h"
+#include "../RadioList/RadioList.h"
+#include "../EventEngine/EventEngine.h"
+
 using namespace std;
 
 struct MyListener : public MouseListener
 {
 	MyListener(Control &c) : _c(c) { }
-	void mousePressed(Button &b, int x, int y, bool isLeft)
+	void mousePressed(Control& b, short x, short y, bool isLeft)
 	{
 		_c.setForeground(ForegroundColor::Red);
 	}
 private:
 	Control &_c;
 };
-int main(int argc, char **argv)
-{
+
+
+int main(void){
+
 	Label lName(20, "Name: ");
 	//lName.setText("Name: ");
 
@@ -41,37 +42,38 @@ int main(int argc, char **argv)
 	tAddress.setValue("221B Baker Street, London");
 	tAddress.setBorder(BorderType::Single);
 	ComboBox cCountry(20, { "Israel", "Great Britain", "United States" });
-	//cCountry.setSelectedIndex(1);
+	cCountry.setSelectedIndex(1);
 	cCountry.setBorder(BorderType::Single);
-	RadioList rSex(2, 15, { "Male", "Female" });
+	RadioList rSex(8, 15, { "Male", "Female" });
 	rSex.setBorder(BorderType::Single);
-	CheckList clInterests(3, 15, { "Sports", "Books", "Movies" });
-	//clInterests.selectIndex(1);
+	CheckList clInterests(11, 20, { "Sports", "Books", "Movies" });
+	clInterests.selectIndex(1);
 	clInterests.setBorder(BorderType::Single);
 	//NumericBox nAge(15, 18, 120);
 	//nAge.setValue(23);
 	//nAge.setBorder(BorderType::Single);
-	//MyListener& listener(tAddress);
+	MyListener* listener = new MyListener(tAddress);
 	Button bSubmit(10, "Submit");
-	//bSubmit.addListener(listener);
+	bSubmit.addListener(*listener);
 	bSubmit.setBorder(BorderType::Double);
-	Panel main(50,70);
+	Panel main(50, 70);
 	main.addControl(&lName, 1, 2);
 	main.addControl(&lAddress, 1, 5);
 	main.addControl(&lCountry, 1, 8);
-	main.addControl(&lSex, 1, 11);
-	main.addControl(&lInterests, 1, 15);
-	main.addControl(&lAge, 1, 20);
+	main.addControl(&lSex, 1, 13);
+	main.addControl(&lInterests, 1, 21);
+	main.addControl(&lAge, 1, 32);
 	main.addControl(&tName, 25, 2);
 	main.addControl(&tAddress, 25, 5);
 	main.addControl(&cCountry, 25, 8);
-	main.addControl(&rSex, 25, 11);
-	main.addControl(&clInterests, 25, 15);
-	//main.addControl(&nAge, 25, 20);
+	main.addControl(&rSex, 25, 13);
+	main.addControl(&clInterests, 25, 21);
+	//main.addControl(&nAge, 25, 32);
 
-	main.addControl(&bSubmit, 1, 22);
+	main.addControl(&bSubmit, 1, 35);
 	Control::setFocus(&tName);
 	EventEngine engine;
 	engine.run(main);
 	return 0;
+
 }

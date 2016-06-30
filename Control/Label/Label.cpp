@@ -3,7 +3,10 @@
 
 Label::Label(int width, string value):Control(width)
 {
-	setValue(value);
+	if (width - value.size() < 2) setValue(value);
+	else {
+		setValue(makeStringInTheMiddle(width, value));
+	}
 }
 
 
@@ -25,9 +28,14 @@ void Label::draw(Graphics graphics, int x , int y, size_t s) {
 }
 
 string Label::makeStringInTheMiddle(int width, string value) {
+	
 	int mid = (width / 2) - (value.size() / 2);
 	string str;
 	str.resize(width);
 	str.insert(mid, value);
 	return str;
+}
+
+string Label::getValue() {
+	return value;
 }
