@@ -23,6 +23,14 @@ void Button::mousePressed(short x, short y, bool isLeft){
 		listener->mousePressed(*this, x, y, isLeft);
 	}
 }
+
+void Button::keyDown(WORD click, CHAR chr){
+	if (click == VK_RETURN) {
+		//add the same functional like mouse press
+		listener->mousePressed(*this, 0, 0, true);
+	}
+}
+
 void Button::setValue(string value){
 	text = value;
 }
@@ -34,4 +42,5 @@ string Button::getValue(){
 }
 
 Button::~Button(){
+	free(listener);
 }

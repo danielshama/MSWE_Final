@@ -1,11 +1,11 @@
 #include "TextBox.h"
 
 
-TextBox::TextBox(int width) : Control(width) , curserPosition(0){}
+TextBox::TextBox(int width) : Control(width) , curserPosition(){}
 
 void TextBox::setValue(string val) {
 	value = val.substr(0, getWidth() - 2);
-	curserPosition = value.substr(0, getWidth() - 2).length();
+	curserPosition = value.substr(0, getWidth() - 2).length() + 1;
 }
 
 string TextBox::getValue() {
@@ -23,22 +23,33 @@ void TextBox::draw(Graphics graphics, int x, int y, size_t layer) {
 	}
 	graphics.write(getBodyLeft(), getBodyTop(), toPrint);
 	if (isFocus()) {
-		graphics.setCursorVisibility(true);
-		if (curserPosition > getWidth()-2) 
-			graphics.moveTo(getBodyLeft() + getWidth() - 1, getBodyTop());
-		else if (curserPosition == 1) 
-			graphics.moveTo(getBodyLeft(), getBodyTop());
-		else
-			graphics.moveTo(getLeft() + curserPosition, getBodyTop());
-	}
+		if(Control::getFocus() == this) graphics.setCursorVisibility(true);
+	} 
 	graphics.resetColors();
+}
+
+int TextBox::getCurserPosition() {
+	return curserPosition;
+}
+
+void TextBox::moveCurser(Graphics g){
+	if (getCurserPosition() > getWidth()-2){
+		g.moveTo(getBodyLeft() + getCurserPosition() - 2, getBodyTop());
+	}
+	else if (curserPosition == 1){
+		g.moveTo(getBodyLeft(), getBodyTop());
+	} else {
+		g.moveTo(getBodyLeft() + getCurserPosition() - 1, getBodyTop());
+	}
 }
 
 void TextBox::keyDown(WORD kind, CHAR c) {
 
 	switch (kind)
 	{
-
+		
+		case VK_RETURN:
+			break;
 		case VK_RIGHT:
 			moveRight();
 			break;
@@ -68,10 +79,7 @@ void TextBox::keyDown(WORD kind, CHAR c) {
 }
 
 void TextBox::mousePressed(short x, short y, bool b){
-	//check if click is in the textBox limits
-	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
-	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
-	Control::setFocus(this);
+	Control::mousePressed(x, y, b);
 }
 
 
@@ -106,8 +114,7 @@ void TextBox::deleteRight(){
 
 void TextBox::addCharecter(CHAR c){
 	if (value.length() == getWidth() - 2) {
-		value.insert(curserPosition - 1, 1, c);
-		deleteLast();
+		return;
 	}
 	else if (!value.length()) {
 		value = string("");
@@ -116,5 +123,6 @@ void TextBox::addCharecter(CHAR c){
 	else value.insert(curserPosition - 1, 1, c);
 	moveRight();
 }
+
 
 TextBox::~TextBox() {}

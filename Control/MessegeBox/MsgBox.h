@@ -19,16 +19,13 @@ class MsgBox : public Panel
 	};
 
 
-	Label *title;
-	Label *text;
-	Button *okBtn;
-
 public:
 	MsgBox(int height, int width);
 	void setText(string text);
 	void setTitle(string text);
 	void mousePressed(short, short, bool);
 	void keyDown(WORD, CHAR);
-	~MsgBox();
+	void show();
+	void hide();
 };
 

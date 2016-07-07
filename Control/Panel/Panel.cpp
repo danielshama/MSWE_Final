@@ -87,13 +87,20 @@ void Panel::setLocation(COORD coord) {
 	}
 }
 
-void Panel::toggleMsgBox(){
-	isMsgBoxOpen = !isMsgBoxOpen;
+void Panel::openMsgBtn(){
+	isMsgBoxOpen = true;
 }
+
+void Panel::closeMsgBtn(){
+	isMsgBoxOpen = false;
+}
+
 bool Panel::getMsgOpen(){
 	return isMsgBoxOpen;
 }
 
 Panel::~Panel() {
-
+	for (int i = 0; i < controls.size(); i++) {
+		free(controls[i]);
+	}
 }

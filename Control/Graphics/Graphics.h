@@ -25,7 +25,6 @@ public:
 	void write(wstring s);
 	void write(int x, int y, wstring s);
 	void setCursorVisibility(bool isVisible);
-
 	Color convertToColor(BackgroundColor c);
 	Color convertToColor(ForegroundColor c);
 

@@ -116,6 +116,11 @@ void ComboBox::mousePressed(short x, short y , bool isLeft) {
 	}
 }
 
+void ComboBox::unfocus(){
+	ListPanel::unfocus();
+	closeList();
+}
+
 void ComboBox::toggle() {
 	if (isOpen) closeList();
 	else openList();
@@ -133,4 +138,7 @@ void ComboBox::openList() {
 
 ComboBox::~ComboBox()
 {
+	Panel::~Panel();
+	free(choosenItem);
+	free(toogleBtn);
 }

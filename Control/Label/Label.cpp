@@ -25,7 +25,6 @@ void Label::draw(Graphics graphics, int x , int y, size_t layer) {
 	Control::draw(graphics, x, y, layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
-	graphics.setCursorVisibility(false);
 	graphics.write(getBodyLeft(),getBodyTop(), value);
 	graphics.resetColors();
 }

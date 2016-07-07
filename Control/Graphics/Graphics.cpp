@@ -64,16 +64,14 @@ void Graphics::resetColors() {
 	updateConsoleAttributes();
 }
 
-void Graphics::setCursorVisibility(bool isVisible)
-{
+void Graphics::setCursorVisibility(bool isVisible){
 	CONSOLE_CURSOR_INFO cci;
 	GetConsoleCursorInfo(_console, &cci);
 	cci.bVisible = isVisible;
 	SetConsoleCursorInfo(_console, &cci);
 }
 
-void Graphics::updateConsoleAttributes()
-{
+void Graphics::updateConsoleAttributes(){
 	DWORD attributes = 0;
 
 	switch (_foreground)

@@ -27,7 +27,8 @@ int ListPanel::itemInFocus(){
 			return i;
 		}
 	}
-	return -1;
+	static_cast<ButtonItem*>(controls[0])->focus();
+	return 0;
 }
 
 void ListPanel::keyDown(WORD click, CHAR chr){
@@ -80,7 +81,12 @@ void ListPanel::clearAllFocus() {
 	}
 }
 
-
-ListPanel::~ListPanel()
-{
+void ListPanel::unfocus(){
+	Panel::unfocus();
+	int size = controls.size();
+	for (int i = 0; i < size; i++) {
+		static_cast<ButtonItem*>(controls[i])->unfocus();
+	}
 }
+
+

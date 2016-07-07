@@ -8,7 +8,6 @@
 
 class RadioList : public ListPanel
 {
-
 	struct SelectListener : public MouseListener {
 		SelectListener(Control& c) : _c(c) {}
 		void mousePressed(Control& b, short x, short y, bool isLeft) {
@@ -27,6 +26,5 @@ public:
 	RadioList(int height, int width, vector<string> options);
 	size_t getSelectedIndex();
 	void setSelectedIndex(size_t index);
-	~RadioList();
 };
 

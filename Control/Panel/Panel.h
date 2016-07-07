@@ -21,7 +21,8 @@ public:
 	virtual void keyDown(WORD, CHAR){}
 	void setLocation(COORD);
 	static bool getMsgOpen();
-	static void toggleMsgBox();
+	static void openMsgBtn();
+	static void closeMsgBtn();
 
 	~Panel();
 };

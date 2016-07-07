@@ -46,6 +46,7 @@ public:
 	void draw(Graphics graphics, int, int, size_t);
 	void mousePressed(short, short, bool);
 	void toggle();
+	void unfocus();
 	void openList();
 	void closeList();
 

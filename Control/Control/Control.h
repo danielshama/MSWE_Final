@@ -21,8 +21,8 @@ protected:
 	bool isfocusable;
 public:
 	Control(int width);
-	void show();
-	void hide();
+	virtual void show();
+	virtual void hide();
 	int getLayer();
 	void setLayer(int);
 	void setForeground(ForegroundColor color);
@@ -32,8 +32,8 @@ public:
 	void setBorder(BorderType type);
 	virtual void setLocation(COORD);
 	COORD getLocation();
-	void focus();
-	void unfocus();
+	virtual void focus();
+	virtual void unfocus();
 	BorderType getBorderType();
 	char getBorderTypeHorizontal();
 	char getBorderTypeVertical();
@@ -58,7 +58,7 @@ public:
 	static void setFocus(Control* c);
 	static Control* getFocus();
 
-	~Control();
+	virtual ~Control();
 };
 
 static Control* currentFocused = NULL;

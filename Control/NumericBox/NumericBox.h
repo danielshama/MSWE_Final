@@ -38,6 +38,5 @@ public:
 	void setValue(int val);
 	int getValue();
 	int changeLabelToInt();
-	~NumericBox();
 	
 };

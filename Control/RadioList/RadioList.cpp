@@ -39,12 +39,7 @@ void RadioList::setSelectedIndex(size_t index) {
 }
 
 void RadioList::mousePressed(short x, short y, bool isLeft) {
-	//check if its in the panel
-	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
-	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
-
-	//take the global focus
-	Control::setFocus(this);
+	Control::mousePressed(x, y, isLeft);
 
 	//pass the click to the childrens
 	int size = controls.size();
@@ -53,7 +48,3 @@ void RadioList::mousePressed(short x, short y, bool isLeft) {
 	}
 }
 
-
-RadioList::~RadioList()
-{
-}

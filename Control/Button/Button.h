@@ -27,7 +27,7 @@ public:
 	void setValue(string value);
 	string getValue();
 	void addListener(MouseListener&);
-	void keyDown(WORD, CHAR){};
+	void keyDown(WORD, CHAR);
 
 	~Button();
 };

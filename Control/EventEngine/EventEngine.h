@@ -2,6 +2,7 @@
 
 #include "../Control/Control.h"
 #include "../Panel/Panel.h"
+#include "../TextBox/TextBox.h"
 #include <Windows.h>
 
 class EventEngine

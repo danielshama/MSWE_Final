@@ -25,6 +25,5 @@ public:
 	void selectIndex(size_t index);
 	void deselectIndex(size_t index);
 	void mousePressed(short, short, bool);
-	~CheckList();
 };
 

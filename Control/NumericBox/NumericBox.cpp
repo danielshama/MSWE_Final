@@ -28,10 +28,6 @@ NumericBox::NumericBox(int width, int min, int max):Panel(5,width)
 }
 
 
-NumericBox::~NumericBox()
-{
-}
-
 void NumericBox::setValue(int val) {
 	
 	if ( val < min || val >max) return;

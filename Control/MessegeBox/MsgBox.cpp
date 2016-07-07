@@ -3,12 +3,11 @@
 
 MsgBox::MsgBox(int height, int width) : Panel(height, width)
 {
-	//toggleMsgBox();
 	setLayer(2);
 	isfocusable = false;
-	title = new Label(width-2, "temp");
-	text = new Label(width-2, "text text text");
-	okBtn = new Button(width / 2, Label::makeStringInTheMiddle(width/2, "OK"));
+	Label *title = new Label(width - 2, "temp");
+	Label *text = new Label(width - 2, "text text text");
+	Button *okBtn = new Button(width / 2, Label::makeStringInTheMiddle(width/2, "OK"));
 	CloseListener *closeListener = new CloseListener(*this);
 	okBtn->addListener(*closeListener);
 	title->setLayer(2);
@@ -26,30 +25,35 @@ void MsgBox::mousePressed(short x, short y, bool isLeft) {
 	//check if click is in the panel limits
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth()) ||
 		y < this->getTop() || (y > this->getTop() + this->getHeight())) {
-		toggleMsgBox();
-		hide();
+		if (isVisible()){
+			hide();
+		}
 	}
 
 	controls[2]->mousePressed(x, y, isLeft);
 }
 
 void MsgBox::setText(string text) {
-	this->text->setValue(text);
+	static_cast<Label*>(controls[1])->setValue(text);
 }
 
 void MsgBox::setTitle(string text) {
-	title->setValue(text);
+	static_cast<Label*>(controls[0])->setValue(text);
 }
-
-
 
 void MsgBox::keyDown(WORD click, CHAR chr){
 	if (click == VK_RETURN) {
-		toggleMsgBox();
 		hide();
 	}
 }
 
-MsgBox::~MsgBox()
-{
+void MsgBox::show(){
+	Control::show();
+	openMsgBtn();
 }
+
+void MsgBox::hide(){
+	Control::hide();
+	closeMsgBtn();
+}
+

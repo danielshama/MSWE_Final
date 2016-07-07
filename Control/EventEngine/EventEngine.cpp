@@ -20,6 +20,10 @@ void EventEngine::run(Control &c)
 				c.draw(_graphics, 0, 0, p);
 			}
 			redraw = false;
+			Control * focused = Control::getFocus();
+			if (dynamic_cast<TextBox *>(focused) != NULL) {
+				static_cast<TextBox *>(focused)->moveCurser(_graphics);
+			}
 		}
 
 		INPUT_RECORD record;
@@ -35,8 +39,9 @@ void EventEngine::run(Control &c)
 				auto code = record.Event.KeyEvent.wVirtualKeyCode;
 				auto chr = record.Event.KeyEvent.uChar.AsciiChar;
 				if (code == VK_TAB) {
-					if (!Panel::getMsgOpen())
+					if (!Panel::getMsgOpen()){
 						moveFocus(c, f);
+					}
 				}
 				else
 					f->keyDown(code, chr);
