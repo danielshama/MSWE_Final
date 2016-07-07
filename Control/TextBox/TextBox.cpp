@@ -47,12 +47,15 @@ void TextBox::keyDown(WORD kind, CHAR c) {
 
 	switch (kind)
 	{
-		
+		case VK_DOWN:
+		case VK_UP:
 		case VK_RETURN:
 			break;
+
 		case VK_RIGHT:
 			moveRight();
 			break;
+
 		case VK_LEFT:
 			moveLeft();
 			break;
@@ -72,6 +75,7 @@ void TextBox::keyDown(WORD kind, CHAR c) {
 		case VK_DELETE:
 			deleteRight();
 			break;
+
 		default:
 			addCharecter(c);
 			break;
