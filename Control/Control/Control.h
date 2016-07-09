@@ -38,7 +38,7 @@ public:
 	char getBorderTypeHorizontal();
 	char getBorderTypeVertical();
 	vector<int> getBorderTypeCorners();
-	virtual void draw(Graphics graphics, int, int, size_t);
+	virtual void draw(Graphics& graphics, int, int, size_t);
 	virtual void keyDown(WORD, CHAR) = 0;
 	virtual void mousePressed(short, short, bool) = 0;
 	bool canGetFocus();

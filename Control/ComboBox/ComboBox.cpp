@@ -52,7 +52,7 @@ void ComboBox::setSelectedIndex(size_t index) {
 }
 
 
-void ComboBox::draw(Graphics graphics, int, int, size_t layer) {
+void ComboBox::draw(Graphics &graphics, int, int, size_t layer) {
 	int la = getLayer();
 	if (getLayer() != layer) return;
 	Control::draw(graphics, getLeft(), getTop(), layer);

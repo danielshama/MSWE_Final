@@ -11,16 +11,11 @@ Label::Label(int width, string value):Control(width)
 	}
 }
 
-
-Label::~Label()
-{
-}
-
 void Label::setValue(string val) {
 	value = makeStringInTheMiddle(getWidth() - 2, val);
 }
 
-void Label::draw(Graphics graphics, int x , int y, size_t layer) {
+void Label::draw(Graphics &graphics, int x , int y, size_t layer) {
 	if (getLayer() != layer) return;
 	Control::draw(graphics, x, y, layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
@@ -40,4 +35,8 @@ string Label::makeStringInTheMiddle(int width, string value) {
 
 string Label::getValue() {
 	return value;
+}
+
+Label::~Label()
+{
 }

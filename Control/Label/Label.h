@@ -10,7 +10,7 @@ public:
 	Label(int width, string value);
 
 	void setValue(string value);
-	void draw(Graphics graphics, int, int, size_t);
+	void draw(Graphics &graphics, int, int, size_t);
 	static string makeStringInTheMiddle(int width, string value);
 	string getValue();
 	void keyDown(WORD, CHAR) {};

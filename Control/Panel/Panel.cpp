@@ -61,7 +61,7 @@ void Panel::mousePressed(short x, short y, bool isLeft) {
 	}
 }
 
-void Panel::draw(Graphics graphics, int x, int y, size_t layer) {
+void Panel::draw(Graphics &graphics, int x, int y, size_t layer) {
 	if (!isVisible()) return;
 	if (layer == getLayer()) Control::draw(graphics, getLeft(), getTop(), layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));

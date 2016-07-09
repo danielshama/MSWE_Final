@@ -107,7 +107,7 @@ void Control::setLocation(COORD coord){
 COORD Control::getLocation(){
 	return location;
 }
-void Control::draw(Graphics graphics, int x, int y, size_t w){
+void Control::draw(Graphics &graphics, int x, int y, size_t w){
 	if (isFocus()) {
 		graphics.setForeground(graphics.convertToColor(ForegroundColor::Purple));
 	} else {

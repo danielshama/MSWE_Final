@@ -12,7 +12,7 @@ string TextBox::getValue() {
 	return value;
 }
 
-void TextBox::draw(Graphics graphics, int x, int y, size_t layer) {
+void TextBox::draw(Graphics& graphics, int x, int y, size_t layer) {
 	if (getLayer() != layer) return;
 	Control::draw(graphics, x, y, layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));

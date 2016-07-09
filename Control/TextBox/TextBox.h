@@ -18,7 +18,7 @@ public:
 	TextBox(int width);
 	void setValue(string value);
 	string getValue();
-	void draw(Graphics graphics, int, int, size_t);
+	void draw(Graphics &graphics, int, int, size_t);
 	void keyDown(WORD, CHAR);
 	void mousePressed(short, short, bool);
 	int getCurserPosition();

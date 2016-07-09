@@ -4,7 +4,7 @@ Button::Button(int width, string text) : Control(width), text(text), clickable(t
 
 }
 
-void Button::draw(Graphics graphics, int x, int y, size_t layer){
+void Button::draw(Graphics& graphics, int x, int y, size_t layer){
 	if (getLayer() != layer) return;
 	Control::draw(graphics, x, y, layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));

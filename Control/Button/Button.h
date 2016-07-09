@@ -22,7 +22,7 @@ protected:
 public:
 	Button(int width, string text);
 
-	void draw(Graphics graphics, int x, int y, size_t w);
+	void draw(Graphics &graphics, int x, int y, size_t w);
 	void mousePressed(short, short, bool);
 	void setValue(string value);
 	string getValue();

@@ -80,7 +80,7 @@ namespace Testing
 			textBox.setValue("Hello");
 			textBox.setLocation({ 0,0 });
 			textBox.draw(g, 0, 0, 0);
-			Assert::AreEqual(g.getStringAt(0, 0, 5).c_str(), "Hello");
+			Assert::AreEqual("Hello", g.getStringAt(0, 0, 5).c_str());
 			g.clearAt(0, 0, 10);
 			Assert::IsTrue(g.isClear());
 		}
