@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../NumericBox/NumericBox.h"
+#include "../TextBox/TextBox.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -71,6 +72,17 @@ namespace Testing
 			Assert::AreEqual(2, (int)box->getLeft(), L"message");
 			Assert::AreEqual(3, (int)box->getBodyTop(), L"message");
 			Assert::AreEqual(3, (int)box->getBodyLeft(), L"message");
+		}
+		TEST_METHOD(testDraw)
+		{
+			GraphicsMock g;
+			TextBox textBox(10);
+			textBox.setValue("Hello");
+			textBox.setLocation({ 0,0 });
+			textBox.draw(g, 0, 0, 0);
+			Assert::AreEqual(g.getStringAt(0, 0, 5).c_str(), "Hello");
+			g.clearAt(0, 0, 10);
+			Assert::IsTrue(g.isClear());
 		}
 	};
 }
