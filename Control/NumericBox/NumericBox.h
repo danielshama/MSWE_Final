@@ -37,6 +37,6 @@ public:
 	NumericBox(int width, int min, int max);
 	void setValue(int val);
 	int getValue();
-	int changeLabelToInt();
+	//int changeLabelToInt();
 	
 };

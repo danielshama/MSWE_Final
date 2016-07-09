@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -14,19 +14,20 @@
     <ProjectGuid>{70477615-E2EE-4FD7-BEEB-8D5B758CDE5A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Testing</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>false</UseOfMfc>
@@ -99,8 +100,8 @@
     <ProjectReference Include="..\Control\Control.vcxproj">
       <Project>{34d682ea-c8c1-4748-a8b8-cd42dddd7349}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\EventEngine\EventEngine.vcxproj">
-      <Project>{53df0d8f-b144-4205-bef4-79dbf90ec735}</Project>
+    <ProjectReference Include="..\Form\Form.vcxproj">
+      <Project>{30f70b01-5ba5-4c83-ba46-de1fad5fa3be}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">
       <Project>{bbeea1e1-85e6-4106-94ef-4c11e2e1dc61}</Project>
@@ -110,9 +111,6 @@
     </ProjectReference>
     <ProjectReference Include="..\NumericBox\NumericBox.vcxproj">
       <Project>{c49d5064-751a-4524-958d-4747c45ac0ab}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Panel\Panel.vcxproj">
-      <Project>{b3bf2d68-2dfc-4742-9a9e-1b22515d0f4d}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
